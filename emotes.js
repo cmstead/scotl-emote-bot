@@ -87,20 +87,4 @@ module.exports = [
         name: 'levitating adept',
         url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/f/f2/LevitatingAdept-1.png/revision/latest/scale-to-width-down/300?cb=20210718200036'
     },
-    {
-        name: 'confident sightseer',
-        url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/c/c8/ConfidentSightseer-1.png/revision/latest/scale-to-width-down/300?cb=20210718192058'
-    },
-    {
-        name: 'proud victor',
-        url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/d/dc/ProudVictor-1.png/revision/latest/scale-to-width-down/300?cb=20210718192254'
-    },
-    {
-        name: 'stealthy survivor',
-        url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/f/f1/StealthySurvivor-1.png/revision/latest/scale-to-width-down/300?cb=20210718193735'
-    },
-    {
-        name: 'polite scholar',
-        url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/3/3e/PoliteScholar-1.png/revision/latest/scale-to-width-down/300?cb=20210718200359'
-    },
 ];
