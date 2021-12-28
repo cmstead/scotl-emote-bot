@@ -1,10 +1,11 @@
 {
-  "name": "skyph",
+  "name": "scotl-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:local": "nodemon bot.js"
   },
   "author": "Chris Stead",
   "license": "MIT",
@@ -12,5 +13,8 @@
     "discord.js": "^13.4.0",
     "dotenv": "^10.0.0",
     "node-fetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
