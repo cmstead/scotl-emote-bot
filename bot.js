@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const Discord = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+const { Client } = require('discord.js');
+const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 const emotes = require('./emotes');
 
@@ -15,16 +15,16 @@ function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
     const emote = emotes.find(emote => emote.name.includes(phrase));
 
-    if(tokens.length === 0) {
+    if (tokens.length === 0) {
         message.reply('you rang?');
-    } else if(phrase === 'list') {
+    } else if (phrase === 'list') {
         const availableEmotes = emotes.map(emote => emote.name);
         message.reply(`
 Here are the emotes I know:
 
 ${availableEmotes.join('\n')}
         `)
-    } else if(typeof emote === 'object'){
+    } else if (typeof emote === 'object') {
         message.reply(emote.url);
     } else {
         message.reply('I don\'t know that one!')
@@ -34,7 +34,7 @@ ${availableEmotes.join('\n')}
 client.on('message', msg => {
     const tokens = msg.content.toLowerCase().split(' ');
 
-    if(tokens[0] === 'scotl') {
+    if (tokens[0] === 'scotl') {
         sendReponse(msg, tokens.slice(1));
     }
 });
