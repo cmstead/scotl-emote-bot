@@ -5,12 +5,11 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 const emotes = require('./emotes');
 
-console.log(typeof process.env.DISCORD_BOT_TOKEN);
+client.login(process.env.DISCORD_BOT_TOKEN);
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
-
 
 function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
@@ -40,4 +39,3 @@ client.on('message', msg => {
     }
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
