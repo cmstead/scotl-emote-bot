@@ -80,11 +80,11 @@ module.exports = [
         url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/7/75/PrayingAcolyte-1.png/revision/latest/scale-to-width-down/300?cb=20210718200213'
     },
     {
-        name: 'meditating monastic',
+        name: 'meditate meditating monastic',
         url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/a/a5/Meditating-Monastic-1.png/revision/latest/scale-to-width-down/300?cb=20210718200002'
     },
     {
-        name: 'levitating adept',
+        name: 'levitate levitating adept',
         url: 'https://static.wikia.nocookie.net/sky-children-of-the-light/images/f/f2/LevitatingAdept-1.png/revision/latest/scale-to-width-down/300?cb=20210718200036'
     },
 ];

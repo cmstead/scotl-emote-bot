@@ -11,19 +11,51 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-function sendReponse(message, tokens) {
-    const phrase = tokens.join(' ');
-    const emote = emotes.find(emote => emote.name.includes(phrase));
+function matchAll(emote, tokens) {
+    return tokens.reduce((result, token) => {
+        return emote.includes(token) && result;
+    }, true);
+}
 
-    if (tokens.length === 0) {
-        message.reply('you rang?');
-    } else if (phrase === 'list') {
-        const availableEmotes = emotes.map(emote => emote.name);
-        message.reply(`
+function listEmotes(message) {
+    const availableEmotes = emotes.map(emote => emote.name);
+    message.reply(`
 Here are the emotes I know:
 
 ${availableEmotes.join('\n')}
-        `)
+        `);
+}
+
+function showHelp(message) {
+    message.reply(`
+Commands:
+
+help
+list
+
+Show Emote:
+
+scotl <emote search term>
+
+Example: To show the Tearful Light Miner emote you can search in any of these ways:
+
+scotl cry
+scotl crying
+scotl light miner
+scotl tearful light miner
+`);
+}
+
+function sendReponse(message, tokens) {
+    const phrase = tokens.join(' ');
+    const emote = emotes.find(emote => matchAll(emote, tokens));
+
+    if (tokens.length === 0) {
+        message.reply('you rang?');
+    } else if (phrase === 'help') {
+        showHelp(message);
+    } else if (phrase === 'list') {
+        listEmotes(message);
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
     } else {
