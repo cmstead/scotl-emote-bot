@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:local": "nodemon bot.js",
-    "start": "node bot.js"
+    "start:local": "nodemon bot.js"
   },
   "author": "Chris Stead",
   "license": "MIT",
