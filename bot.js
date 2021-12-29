@@ -48,7 +48,7 @@ scotl tearful light miner
 
 function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
-    const emote = emotes.find(emote => matchAll(emote, tokens));
+    const emote = emotes.find(emote => matchAll(emote.name, tokens));
 
     if (tokens.length === 0) {
         message.reply('you rang?');
