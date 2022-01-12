@@ -59,7 +59,7 @@ function sendReponse(message, tokens) {
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
     } else if(phrase.startsWith('next')) {
-        message.reply(new Date());
+        message.reply((new Date()).toUTCString());
     } else {
         message.reply('I don\'t know that one!')
     }
