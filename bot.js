@@ -64,7 +64,7 @@ function sendReponse(message, tokens) {
         const timePattern = 'HH:mm';
         const timeZone = 'America/Los_Angeles';
 
-        const testDate = dateFns.formatInTimeZone(currentDate, timePattern, { timeZone: timeZone });
+        const testDate = dateFns.formatInTimeZone(currentDate, timeZone, timePattern);
 
         console.log(testDate);
 
