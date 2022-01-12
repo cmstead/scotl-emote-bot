@@ -61,15 +61,14 @@ function sendReponse(message, tokens) {
         message.reply(emote.url);
     } else if (phrase.startsWith('next')) {
         const currentDate = new Date();
-        const zonedDate = dateFns.utcToZonedTime(currentDate, 'GMT');
         const timePattern = 'HH:mm';
         const timeZone = 'America/Los_Angeles';
 
-        const testDate = dateFns.format(zonedDate, timePattern, { timeZone: timeZone });
+        const testDate = dateFns.formatInTimeZone(currentDate, timePattern, { timeZone: timeZone });
 
         console.log(testDate);
 
-        message.reply('test');
+        message.reply(testDate);
     } else {
         message.reply('I don\'t know that one!')
     }
