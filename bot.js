@@ -90,7 +90,7 @@ function sendReponse(message, tokens) {
 
         let nextEventMessage = null;
 
-        if(['grandma', 'gma'].includes(tokens[1].toLowerCase)) {
+        if(['grandma', 'gma'].includes(tokens[1].toLowerCase())) {
             nextEventMessage = nextGrandma(currentPacificTime);
         } else {
             nextEventMessage = 'Next event must be either "grandma" or "gma".';
