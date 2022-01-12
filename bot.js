@@ -60,12 +60,16 @@ function sendReponse(message, tokens) {
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
     } else if (phrase.startsWith('next')) {
-        // const currentDate = new Date();
-        // const zonedDate = utcToZonedTime(currentDate, 'GMT');
-        // const timePattern = 'HH:mm';
-        // const timeZone = 'America/Los_Angeles';
+        const currentDate = new Date();
+        const zonedDate = utcToZonedTime(currentDate, 'GMT');
+        const timePattern = 'HH:mm';
+        const timeZone = 'America/Los_Angeles';
 
-        message.reply('test'); //format(zonedDate, timePattern, { timeZone: timeZone }));
+        const testDate = format(zonedDate, timePattern, { timeZone: timeZone });
+
+        console.log(testDate);
+
+        message.reply('test');
     } else {
         message.reply('I don\'t know that one!')
     }
