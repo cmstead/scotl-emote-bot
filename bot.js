@@ -47,6 +47,31 @@ scotl tearful light miner
 `);
 }
 
+function nextGrandma(time) {
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const minutes = parseInt(timeTokens[1]);
+
+    const isEvenHour = hours % 2 === 0;
+    const isBeforeHalfHour = 30 - minutes >= 0;
+
+    if (isEvenHour && isBeforeHalfHour) {
+        return `${30 - minutes} minutes`;
+    } else if (!isEvenHour && isBeforeHalfHour) {
+        return `1 hour, ${30 - minutes} minutes`;
+    } else if (isEvenHour && !isBeforeHalfHour) {
+        return `1 hour, ${90 - minutes} minutes`;
+    } else {
+        return `${90 - minutes} minutes`;
+    }
+}
+
+function getCurrentPacificTime(Date) {
+    const currentDate = new Date();
+    const timePattern = 'HH:mm';
+    const timeZone = 'America/Los_Angeles';
+    return dateFns.formatInTimeZone(currentDate, timeZone, timePattern);
+}
 function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
     const emote = emotes.find(emote => matchAll(emote.name, tokens));
@@ -59,16 +84,10 @@ function sendReponse(message, tokens) {
         listEmotes(message);
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
-    } else if (phrase.startsWith('next')) {
-        const currentDate = new Date();
-        const timePattern = 'HH:mm';
-        const timeZone = 'America/Los_Angeles';
+    } else if (tokens[0] === 'next') {
+        const currentPacificTime = getCurrentPacificTime(Date);
 
-        const testDate = dateFns.formatInTimeZone(currentDate, timeZone, timePattern);
-
-        console.log(testDate);
-
-        message.reply(testDate);
+        message.reply(nextGrandma(currentPacificTime));
     } else {
         message.reply('I don\'t know that one!')
     }
