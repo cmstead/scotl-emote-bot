@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const { format } = require('date-fns');
 const { Client } = require('discord.js');
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
@@ -58,8 +59,12 @@ function sendReponse(message, tokens) {
         listEmotes(message);
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
-    } else if(phrase.startsWith('next')) {
-        message.reply((new Date()).toUTCString());
+    } else if (phrase.startsWith('next')) {
+        const currentDate = new Date();
+        const timePattern = 'HH:mm';
+        const timeZone = 'America/Los_Angeles';
+
+        message.reply(format(currentDate, timePattern, { timeZone: timeZone }));
     } else {
         message.reply('I don\'t know that one!')
     }
