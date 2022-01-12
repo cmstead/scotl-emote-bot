@@ -72,6 +72,7 @@ function getCurrentPacificTime(Date) {
     const timeZone = 'America/Los_Angeles';
     return dateFns.formatInTimeZone(currentDate, timeZone, timePattern);
 }
+
 function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
     const emote = emotes.find(emote => matchAll(emote.name, tokens));
@@ -87,7 +88,15 @@ function sendReponse(message, tokens) {
     } else if (tokens[0] === 'next') {
         const currentPacificTime = getCurrentPacificTime(Date);
 
-        message.reply(nextGrandma(currentPacificTime));
+        let nextEventMessage = null;
+
+        if(['grandma', 'gma'].includes(tokens[1].toLowerCase)) {
+            nextEventMessage = nextGrandma(currentPacificTime);
+        } else {
+            nextEventMessage = 'Next event must be either "grandma" or "gma".';
+        }
+
+        message.reply(nextEventMessage);
     } else {
         message.reply('I don\'t know that one!')
     }
