@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { format, utcToZonedTime } = require('date-fns');
+const dateFns = require('date-fns-tz');
 const { Client } = require('discord.js');
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
@@ -61,11 +61,11 @@ function sendReponse(message, tokens) {
         message.reply(emote.url);
     } else if (phrase.startsWith('next')) {
         const currentDate = new Date();
-        const zonedDate = utcToZonedTime(currentDate, 'GMT');
+        const zonedDate = dateFns.utcToZonedTime(currentDate, 'GMT');
         const timePattern = 'HH:mm';
         const timeZone = 'America/Los_Angeles';
 
-        const testDate = format(zonedDate, timePattern, { timeZone: timeZone });
+        const testDate = dateFns.format(zonedDate, timePattern, { timeZone: timeZone });
 
         console.log(testDate);
 
