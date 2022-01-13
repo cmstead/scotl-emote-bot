@@ -33,6 +33,15 @@ Commands:
 
 help
 list
+next
+
+Next Event (next):
+
+You can ask about the next Grandma or Geyser event in the following ways.
+
+scotl next grandma
+scotl next gma
+scotl next geyser
 
 Show Emote:
 
