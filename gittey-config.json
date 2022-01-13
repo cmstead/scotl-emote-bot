@@ -27,11 +27,11 @@
     "aliases": [
         {
             "name": "pull",
-            "command": "gittey commit; git pull"
+            "command": "npm test; gittey commit; git pull"
         },
         {
             "name": "push",
-            "command": "gittey pull; git push"
+            "command": "gittey pull; npm test; git push"
         }
     ],
     "collaborators": []

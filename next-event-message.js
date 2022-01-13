@@ -20,6 +20,25 @@ function nextGrandma(time) {
     }
 }
 
+function nextGeyser(time) {
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const minutes = parseInt(timeTokens[1]);
+
+    const isEvenHour = hours % 2 === 0;
+
+    if (isEvenHour && minutes === 0) {
+        return `now`;
+    } else if (isEvenHour) {
+        return `in 1 hour, ${60 - minutes} minutes`;
+    } else if (!isEvenHour && minutes === 0) {
+        return 'in 1 hour';
+    } else {
+        return `in ${60 - minutes} minutes`;
+    }
+}
+
 module.exports = {
-    nextGrandma
+    nextGrandma,
+    nextGeyser
 };
