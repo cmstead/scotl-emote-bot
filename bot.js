@@ -53,16 +53,35 @@ function nextGrandma(time) {
     const minutes = parseInt(timeTokens[1]);
 
     const isEvenHour = hours % 2 === 0;
+    const isHalfHour = 30 - minutes === 0;
     const isBeforeHalfHour = 30 - minutes >= 0;
 
-    if (isEvenHour && isBeforeHalfHour) {
-        return `${30 - minutes} minutes`;
+    if (isEvenHour && isHalfHour) {
+        return `now`;
+    } else if (isEvenHour && isBeforeHalfHour) {
+        return `in ${30 - minutes} minutes`;
     } else if (!isEvenHour && isBeforeHalfHour) {
-        return `1 hour, ${30 - minutes} minutes`;
+        return `in 1 hour, ${30 - minutes} minutes`;
     } else if (isEvenHour && !isBeforeHalfHour) {
-        return `1 hour, ${90 - minutes} minutes`;
+        return `in 1 hour, ${90 - minutes} minutes`;
     } else {
-        return `${90 - minutes} minutes`;
+        return `in ${90 - minutes} minutes`;
+    }
+}
+
+function nextGeyser(time) {
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const minutes = parseInt(timeTokens[1]);
+
+    const isEvenHour = hours % 2 === 0;
+
+    if (isEvenHour && minutes === 0) {
+        return `now`;
+    } else if (isEvenHour) {
+        return `in 1 hour, ${60 - minutes} minutes`;
+    } else {
+        return `in ${60 - minutes} minutes`;
     }
 }
 
@@ -90,10 +109,12 @@ function sendReponse(message, tokens) {
 
         let nextEventMessage = null;
 
-        if(['grandma', 'gma'].includes(tokens[1].toLowerCase())) {
-            nextEventMessage = nextGrandma(currentPacificTime);
+        if (['grandma', 'gma'].includes(tokens[1].toLowerCase())) {
+            nextEventMessage = `Next grandma event ${nextGrandma(currentPacificTime)}`;
+        } else if (tokens[1].toLowerCase() === 'geyser') {
+            nextEventMessage = `Next geyser event in ${nextGeyser(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma" or "gma".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", or "geyser".';
         }
 
         message.reply(nextEventMessage);
