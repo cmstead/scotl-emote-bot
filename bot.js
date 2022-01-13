@@ -1,7 +1,11 @@
 require('dotenv').config();
 
 const dateFns = require('date-fns-tz');
+
 const { Client } = require('discord.js');
+
+const { nextGrandma } = require('./next-event-message');
+
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 const emotes = require('./emotes');
@@ -54,28 +58,6 @@ scotl crying
 scotl light miner
 scotl tearful light miner
 `);
-}
-
-function nextGrandma(time) {
-    const timeTokens = time.split(':');
-    const hours = parseInt(timeTokens[0]);
-    const minutes = parseInt(timeTokens[1]);
-
-    const isEvenHour = hours % 2 === 0;
-    const isHalfHour = 30 - minutes === 0;
-    const isBeforeHalfHour = 30 - minutes >= 0;
-
-    if (isEvenHour && isHalfHour) {
-        return `now`;
-    } else if (isEvenHour && isBeforeHalfHour) {
-        return `in ${30 - minutes} minutes`;
-    } else if (!isEvenHour && isBeforeHalfHour) {
-        return `in 1 hour, ${30 - minutes} minutes`;
-    } else if (isEvenHour && !isBeforeHalfHour) {
-        return `in 1 hour, ${90 - minutes} minutes`;
-    } else {
-        return `in ${90 - minutes} minutes`;
-    }
 }
 
 function nextGeyser(time) {
