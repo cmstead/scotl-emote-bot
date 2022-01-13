@@ -1,4 +1,4 @@
-const { nextGrandma, nextGeyser } = require('./next-event-message');
+const { nextGrandma, nextGeyser, nextReset } = require('./next-event-message');
 const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
@@ -24,8 +24,10 @@ function sendReponse(message, tokens) {
             nextEventMessage = `Next grandma event ${nextGrandma(currentPacificTime)}`;
         } else if (tokens[1].toLowerCase() === 'geyser') {
             nextEventMessage = `Next geyser event in ${nextGeyser(currentPacificTime)}`
+        } else if (tokens[1].toLowerCase() === 'reset') {
+            nextEventMessage = `Next reset event in ${nextReset(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", or "geyser".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", or "reset".';
         }
 
         message.reply(nextEventMessage);
