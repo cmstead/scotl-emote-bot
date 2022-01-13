@@ -38,7 +38,22 @@ function nextGeyser(time) {
     }
 }
 
+function nextReset(time) {
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const minutes = parseInt(timeTokens[1]);
+
+    if(hours === 0 && minutes === 0) {
+        return 'now';
+    } else {
+        return minutes !== 0 
+            ? `in ${23 - hours} hours, ${60 - minutes} minutes`
+            : `in ${24 - hours} hours`;
+    }
+}
+
 module.exports = {
     nextGrandma,
-    nextGeyser
+    nextGeyser,
+    nextReset
 };

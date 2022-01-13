@@ -32,6 +32,14 @@
         {
             "name": "push",
             "command": "gittey pull; npm test; git push"
+        },
+        {
+            "name": "deploy-minor",
+            "command": "gittey pull; npm test; npm version minor; git push"
+        },
+        {
+            "name": "deploy-patch",
+            "command": "gittey pull; npm test; npm version patch; git push"
         }
     ],
     "collaborators": []

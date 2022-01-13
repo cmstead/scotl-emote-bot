@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const { nextGrandma, nextGeyser } = require('../next-event-message');
+const { nextGrandma, nextGeyser, nextReset } = require('../next-event-message');
 
 describe('SCOTL next event command', function () {
     describe('next grandma event', function () {
@@ -66,6 +66,29 @@ describe('SCOTL next event command', function () {
             const eventNotificationMessage = nextGeyser(computedCurrentTime);
 
             assert.equal(eventNotificationMessage, 'in 1 hour');
+        });
+    });
+
+    describe('next reset event', function () {
+        it('returns now at midnight pacific', function () {
+            const currentComputedTime = '00:00';
+            const eventNotificationMessage = nextReset(currentComputedTime);
+
+            assert.equal(eventNotificationMessage, 'now');
+        });
+
+        it('returns correct time until reset when not midnight', function () {
+            const currentComputedTime = '3:28';
+            const eventNotificationMessage = nextReset(currentComputedTime);
+
+            assert.equal(eventNotificationMessage, 'in 20 hours, 32 minutes');
+        });
+
+        it('returns correct time until reset when not midnight at the even hour', function () {
+            const currentComputedTime = '4:00';
+            const eventNotificationMessage = nextReset(currentComputedTime);
+
+            assert.equal(eventNotificationMessage, 'in 20 hours');
         });
     });
 });
