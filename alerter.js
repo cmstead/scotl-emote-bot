@@ -1,6 +1,8 @@
 const { getCurrentPacificTime } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 
+const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
+
 module.exports = function (client) {
 
     function sendAlert(alertMessage) {
@@ -11,7 +13,7 @@ module.exports = function (client) {
                 })
                 .then(members =>
                     members.filter((member) => {
-                        return member.roles.cache.find(role => role.name === 'SCOTL Alerts')
+                        return member.roles.cache.find(role => role.name === SCOTL_ALERT_ROLE)
                     }))
                 .then((filteredMembers) => {
                     filteredMembers.forEach(member => member.send(alertMessage));
@@ -53,15 +55,15 @@ module.exports = function (client) {
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
-            if(isNearGeyserTime(hour, minutes) && okayToAlert) {
+            if (isNearGeyserTime(hour, minutes) && okayToAlert) {
                 triggerAlert('The next polluted geyser event is happening soon!');
             }
 
-            if(isNearGrandmaTime(hour, minutes) && okayToAlert) {
+            if (isNearGrandmaTime(hour, minutes) && okayToAlert) {
                 triggerAlert('The next grandma event is happening soon!');
             }
 
-            if(isNearResetTime(hour, minutes)) {
+            if (isNearResetTime(hour, minutes)) {
                 sendAlert('The next grandma event is happening soon!');
             }
         }, 15 * 60 * 1000);
