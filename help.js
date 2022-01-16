@@ -17,14 +17,13 @@ scotl next reset
 
 Show Emote:
 
-scotl <emote search term>
+scotl <emote-name>
 
-Example: To show the Tearful Light Miner emote you can search in any of these ways:
+Like this:
 
 scotl cry
-scotl crying
-scotl light miner
-scotl tearful light miner
+scotl confetti
+scotl bow
 `);
 }
 

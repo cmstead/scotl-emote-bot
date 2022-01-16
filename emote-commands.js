@@ -8,6 +8,8 @@ function matchAll(emote, tokens) {
 
 function listEmotes(message) {
     const availableEmotes = emotes.map(emote => emote.name);
+    availableEmotes.sort();
+
     message.reply(`
 Here are the emotes I know:
 
