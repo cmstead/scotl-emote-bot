@@ -16,7 +16,7 @@ function sendReponse(message, tokens) {
     } else if (typeof emote === 'object') {
         message.reply(emote.url);
     } else if (tokens[0] === 'next') {
-        const currentPacificTime = getCurrentPacificTime(Date);
+        const currentPacificTime = getCurrentPacificTime();
 
         let nextEventMessage = null;
 
