@@ -3,6 +3,8 @@ const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
 
+const oneMinuteInMs = 60 * 1000;
+
 module.exports = function (client) {
 
     function sendAlert(alertMessage) {
@@ -38,19 +40,25 @@ module.exports = function (client) {
     }
 
     let lastAlert = new Date();
+    let lastResetAlert = new Date();
 
     function triggerAlert(message) {
         sendAlert(message);
         lastAlert = new Date();
     }
 
-    function isOkayToAlert() {
-        return differenceInMilliseconds(new Date(), lastAlert) > 20 * 60 * 1000;
+    function triggerResetAlert() {
+        sendAlert('The next grandma event is happening soon!');
+        lastResetAlert = new Date();
+    }
+
+    function isOkayToAlert(lastAlert) {
+        return differenceInMilliseconds(new Date(), lastAlert) > 20 * oneMinuteInMs;
     }
 
     return function startAlertTimer() {
         setInterval(() => {
-            const okayToAlert = isOkayToAlert();
+            const okayToAlert = isOkayToAlert(lastAlert);
             const timeTokens = getCurrentPacificTime().split(':');
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
@@ -63,10 +71,10 @@ module.exports = function (client) {
                 triggerAlert('The next grandma event is happening soon!');
             }
 
-            if (isNearResetTime(hour, minutes)) {
-                sendAlert('The next grandma event is happening soon!');
+            if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
+                triggerResetAlert();
             }
-        }, 15 * 60 * 1000);
+        }, 5 * oneMinuteInMs);
 
         console.log('Alert timer is running!');
     }
