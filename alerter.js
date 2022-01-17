@@ -48,7 +48,7 @@ module.exports = function (client) {
     }
 
     function triggerResetAlert() {
-        sendAlert('The next grandma event is happening soon!');
+        sendAlert('Daily reset is happening soon!');
         lastResetAlert = new Date();
     }
 
