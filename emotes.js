@@ -24,6 +24,10 @@ module.exports = [
         url: 'https://c.tenor.com/l4I9k_Ef4IgAAAAC/sky-children-of-the-light-sky-cotl.gif'
     },
     {
+        name: 'blush',
+        url: 'https://c.tenor.com/l4I9k_Ef4IgAAAAC/sky-children-of-the-light-sky-cotl.gif'
+    },
+    {
         name: 'bow',
         url: 'https://c.tenor.com/uhDoU3fctXYAAAAC/sky-children-of-the-light-sky-cotl.gif'
     },
