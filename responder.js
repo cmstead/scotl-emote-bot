@@ -11,7 +11,10 @@ function sendReponse(message, tokens) {
     const firstToken = typeof tokens[0] === 'string' ? tokens[0].toLowerCase() : '';
 
     if (tokens.length === 0) {
-        message.reply('you rang?');
+        const waveUrl = emotes.find(emote => emote.name === 'wave').url;
+        
+        message.reply('\'Sup?');
+        message.reply(waveUrl);
     } else if (phrase === 'help') {
         showHelp(message);
     } else if (phrase === 'list') {
@@ -38,10 +41,7 @@ function sendReponse(message, tokens) {
     } else if (firstToken === 'weather') {
         message.reply(getWeather());
     }else {
-        const waveUrl = emotes.find(emote => emote.name === 'wave').url;
-        
-        message.reply('\'Sup?');
-        message.reply(waveUrl);
+        message.reply('I don\'t know that one!')
     }
 }
 
