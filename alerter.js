@@ -39,8 +39,13 @@ module.exports = function (client) {
         return hour === 23 && minutes >= 45;
     }
 
+    function isNearForestRainbowTime(hour, minutes) {
+        return [4, 16].includes(hour) && minutes > 54;
+    }
+
     let lastAlert = new Date();
     let lastResetAlert = new Date();
+    let lastRainbowAlert = new Date();
 
     function triggerAlert(message) {
         sendAlert(message);
@@ -63,6 +68,8 @@ module.exports = function (client) {
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
+            const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
+
             if (isNearGeyserTime(hour, minutes) && okayToAlert) {
                 triggerAlert('The next polluted geyser event is happening soon!');
             }
@@ -73,6 +80,10 @@ module.exports = function (client) {
 
             if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
                 triggerResetAlert();
+            }
+
+            if(sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
+                triggerAlert('Visit the forest brook _soon_ for something beautiful!');
             }
         }, 5 * oneMinuteInMs);
 
