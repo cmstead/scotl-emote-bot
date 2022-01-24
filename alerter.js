@@ -77,6 +77,11 @@ module.exports = function (client) {
 
             const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
 
+            if(isNearDragonTime(hour, minutes)) {
+                triggerAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
+                lastDragonAlert = new Date();
+            }
+
             if (isNearGeyserTime(hour, minutes) && okayToAlert) {
                 triggerAlert('The next polluted geyser event is happening soon!');
             }
@@ -94,10 +99,6 @@ module.exports = function (client) {
                 lastRainbowAlert = new Date();
             }
 
-            if(isNearDragonTime(hour, minutes)) {
-                triggerAlert('The next Days of Fortune Auspicious Spirit event is happening soon!');
-                lastDragonAlert = new Date();
-            }
         }, 5 * oneMinuteInMs);
 
         console.log('Alert timer is running!');
