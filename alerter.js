@@ -49,53 +49,46 @@ module.exports = function (client) {
         return [4, 16].includes(hour) && minutes > 54;
     }
 
-    let lastAlert = new Date();
-    let lastResetAlert = new Date();
-    let lastRainbowAlert = new Date();
-    let lastDragonAlert = new Date();
-
-    function triggerAlert(message) {
-        sendAlert(message);
-        lastAlert = new Date();
-    }
-
-    function triggerResetAlert() {
-        sendAlert('Daily reset is happening soon!');
-        lastResetAlert = new Date();
-    }
-
     function isOkayToAlert(lastAlert) {
         return differenceInMilliseconds(new Date(), lastAlert) > 20 * oneMinuteInMs;
     }
 
+    let lastGeyserAlert = new Date();
+    let lastGrandmaAlert = new Date();
+    let lastResetAlert = new Date();
+    let lastRainbowAlert = new Date();
+    let lastDragonAlert = new Date();
+
     return function startAlertTimer() {
         setInterval(() => {
-            const okayToAlert = isOkayToAlert(lastAlert);
             const timeTokens = getCurrentPacificTime().split(':');
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
             const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
 
-            if(isNearDragonTime(hour, minutes)) {
-                triggerAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
+            if (isOkayToAlert(lastDragonAlert) && isNearDragonTime(hour, minutes)) {
+                sendAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
                 lastDragonAlert = new Date();
             }
 
-            if (isNearGeyserTime(hour, minutes) && okayToAlert) {
-                triggerAlert('The next polluted geyser event is happening soon!');
+            if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
+                sendAlert('The next polluted geyser event is happening soon!');
+                lastGeyserAlert = new Date();
             }
 
-            if (isNearGrandmaTime(hour, minutes) && okayToAlert) {
-                triggerAlert('The next grandma event is happening soon!');
+            if (isNearGrandmaTime(hour, minutes) && isOkayToAlert(lastGrandmaAlert)) {
+                sendAlert('The next grandma event is happening soon!');
+                lastGrandmaAlert = new Date();
             }
 
             if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
-                triggerResetAlert();
+                sendAlert('Daily reset is happening soon!');
+                lastResetAlert = new Date();
             }
 
-            if(sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
-                triggerAlert('Visit the forest brook _soon_ for something beautiful!');
+            if (sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
+                sendAlert('Visit the forest brook _soon_ for something beautiful!');
                 lastRainbowAlert = new Date();
             }
 
