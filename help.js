@@ -5,6 +5,13 @@ Commands:
 help
 list
 next
+weather
+
+Treehouse Weather (weather):
+
+Reports current weather at the Treehouse in the Hidden Forest.
+
+scotl weather
 
 Next Event (next):
 
