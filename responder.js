@@ -12,8 +12,8 @@ function sendReponse(message, tokens) {
 
     if (tokens.length === 0) {
         const waveUrl = emotes.find(emote => emote.name === 'wave').url;
-        
-        message.reply('\'Sup?');
+
+        message.reply('\'Hi! Need help? Try "scotl help"');
         message.reply(waveUrl);
     } else if (phrase === 'help') {
         showHelp(message);
