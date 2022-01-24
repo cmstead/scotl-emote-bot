@@ -1,11 +1,11 @@
 const dateFnsTz = require('date-fns-tz');
 const dateFns = require('date-fns');
 
+const US_PACIFIC_TIME_ZONE = 'America/Los_Angeles';
 function getCurrentPacificTime() {
     const currentDate = new Date();
     const timePattern = 'HH:mm';
-    const timeZone = 'America/Los_Angeles';
-    return dateFnsTz.formatInTimeZone(currentDate, timeZone, timePattern);
+    return dateFnsTz.formatInTimeZone(currentDate, US_PACIFIC_TIME_ZONE, timePattern);
 }
 
 function getSundayAsZeroIndexDay(dayIndicator) {
@@ -15,8 +15,7 @@ function getSundayAsZeroIndexDay(dayIndicator) {
 function getCurrentPacificDay() {
     const currentDate = new Date();
     const timePattern = 'i';
-    const timeZone = 'America/Los_Angeles';
-    const dayIndicator = dateFnsTz.formatInTimeZone(currentDate, timeZone, timePattern);
+    const dayIndicator = dateFnsTz.formatInTimeZone(currentDate, US_PACIFIC_TIME_ZONE, timePattern);
 
     return getSundayAsZeroIndexDay(dayIndicator);
 }
@@ -24,11 +23,9 @@ function getCurrentPacificDay() {
 function getPacificTimeDifference(expectedDateString) {
     const expectedDate = new Date(expectedDateString);
     const currentDate = new Date();
-    const timeZone = 'America/Los_Angeles';
 
-
-    const expectedPacificDate = dateFnsTz.utcToZonedTime(expectedDate, timeZone);
-    const currentPacificDate = dateFnsTz.utcToZonedTime(currentDate, timeZone);
+    const expectedPacificDate = dateFnsTz.utcToZonedTime(expectedDate, US_PACIFIC_TIME_ZONE);
+    const currentPacificDate = dateFnsTz.utcToZonedTime(currentDate, US_PACIFIC_TIME_ZONE);
 
     try {
         return dateFns.differenceInHours(currentPacificDate, expectedPacificDate);
