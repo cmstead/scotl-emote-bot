@@ -3,6 +3,7 @@ const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
 const { getWeather } = require('./weather');
+const emotes = require('./emotes');
 
 function sendReponse(message, tokens) {
     const phrase = tokens.join(' ');
@@ -37,7 +38,10 @@ function sendReponse(message, tokens) {
     } else if (firstToken === 'weather') {
         message.reply(getWeather());
     }else {
-        message.reply('I don\'t know that one!')
+        const waveUrl = emotes.find(emote => emote.name === 'wave').url;
+        
+        message.reply('\'Sup?');
+        message.reply(waveUrl);
     }
 }
 

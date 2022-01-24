@@ -55,4 +55,8 @@ module.exports = [
         name: 'crab',
         url: 'https://c.tenor.com/l4m_hnhpQOsAAAAC/sky-kid.gif'
     },
+    {
+        name: 'wave',
+        url: 'https://c.tenor.com/9KbJW2Ef_LAAAAAC/sky-children-of-the-light-wave.gif'
+    },
 ];
