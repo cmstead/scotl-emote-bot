@@ -1,4 +1,4 @@
-const { getCurrentPacificTime } = require('./datetime');
+const { getCurrentPacificTime, getPacificTimeDifference } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
@@ -35,6 +35,12 @@ module.exports = function (client) {
         return hour % 2 === 1 && minutes >= 45;
     }
 
+    function isNearDragonTime(hour, minutes) {
+        const endDate = "February 7, 2022 0:00:00";
+
+        return hour % 2 === 1 && minutes >= 45 && getPacificTimeDifference(endDate);
+    }
+
     function isNearResetTime(hour, minutes) {
         return hour === 23 && minutes >= 45;
     }
@@ -46,6 +52,7 @@ module.exports = function (client) {
     let lastAlert = new Date();
     let lastResetAlert = new Date();
     let lastRainbowAlert = new Date();
+    let lastDragonAlert = new Date();
 
     function triggerAlert(message) {
         sendAlert(message);
@@ -84,6 +91,12 @@ module.exports = function (client) {
 
             if(sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
                 triggerAlert('Visit the forest brook _soon_ for something beautiful!');
+                lastRainbowAlert = new Date();
+            }
+
+            if(isNearDragonTime(hour, minutes)) {
+                triggerAlert('The next Days of Fortune Auspicious Spirit event is happening soon!');
+                lastDragonAlert = new Date();
             }
         }, 5 * oneMinuteInMs);
 
