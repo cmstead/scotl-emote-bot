@@ -20,11 +20,12 @@ function sendReponse(message, tokens) {
 
         let nextEventMessage = null;
 
-        if (['grandma', 'gma'].includes(tokens[1].toLowerCase())) {
+        const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
+        if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
             nextEventMessage = `Next grandma event ${nextGrandma(currentPacificTime)}`;
-        } else if (tokens[1].toLowerCase() === 'geyser') {
+        } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `Next geyser event in ${nextGeyser(currentPacificTime)}`
-        } else if (tokens[1].toLowerCase() === 'reset') {
+        } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next reset event in ${nextReset(currentPacificTime)}`
         } else {
             nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", or "reset".';
