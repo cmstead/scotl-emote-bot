@@ -7,7 +7,7 @@ const oneMinuteInMs = 60 * 1000;
 
 module.exports = function (client) {
 
-    function sendAlert(alertMessage) {
+    function sendDirectMessageAlert(alertMessage) {
         client.guilds.cache.forEach((guild) => {
             guild.fetch()
                 .then((fetchedGuild) => {
@@ -20,6 +20,28 @@ module.exports = function (client) {
                 .then((filteredMembers) => {
                     filteredMembers.forEach(member => member.send(alertMessage));
                 })
+                .catch(function (error) {
+                    console.log(`was there an error: ${error.message}`);
+                });
+        });
+    }
+
+    function sendChannelMessageAlert(alertMessage) {
+        client.guilds.cache.forEach((guild) => {
+            guild.fetch()
+                .then((fetchedGuild) => {
+                    return fetchedGuild.channels.fetch();
+                })
+                .then((channels) => {
+                    const generalChannel = channels.find((channel) => {
+                        return channel.name === 'general'
+                    })
+
+                    if(generalChannel) {
+                        generalChannel.send(alertMessage);
+                    }
+                })
+
                 .catch(function (error) {
                     console.log(`was there an error: ${error.message}`);
                 });
@@ -45,12 +67,16 @@ module.exports = function (client) {
         return hour === 23 && minutes >= 45;
     }
 
+    function isAfterResetTime(hour, minutes) {
+        return hour === 0 && minutes > 5;
+    }
+
     function isNearForestRainbowTime(hour, minutes) {
         return [4, 16].includes(hour) && minutes > 54;
     }
 
-    function isOkayToAlert(lastAlert) {
-        return differenceInMilliseconds(new Date(), lastAlert) > 20 * oneMinuteInMs;
+    function isOkayToAlert(lastAlert, offset = 20) {
+        return differenceInMilliseconds(new Date(), lastAlert) > offset * oneMinuteInMs;
     }
 
     let lastGeyserAlert = new Date();
@@ -58,6 +84,7 @@ module.exports = function (client) {
     let lastResetAlert = new Date();
     let lastRainbowAlert = new Date();
     let lastDragonAlert = new Date();
+    let lastGeneralChannelResetAlert = new Date();
 
     return function startAlertTimer() {
         setInterval(() => {
@@ -68,28 +95,33 @@ module.exports = function (client) {
             const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
 
             if (isOkayToAlert(lastDragonAlert) && isNearDragonTime(hour, minutes)) {
-                sendAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
+                sendDirectMessageAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
                 lastDragonAlert = new Date();
             }
 
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
-                sendAlert('The next polluted geyser event is happening soon!');
+                sendDirectMessageAlert('The polluted geyser is erupting soon!');
                 lastGeyserAlert = new Date();
             }
 
             if (isNearGrandmaTime(hour, minutes) && isOkayToAlert(lastGrandmaAlert)) {
-                sendAlert('The next grandma event is happening soon!');
+                sendDirectMessageAlert('Grandma is serving a meal soon!');
                 lastGrandmaAlert = new Date();
             }
 
             if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
-                sendAlert('Daily reset is happening soon!');
+                sendDirectMessageAlert('Daily reset is happening soon!');
                 lastResetAlert = new Date();
             }
 
             if (sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
-                sendAlert('Visit the forest brook _soon_ for something beautiful!');
+                sendDirectMessageAlert('Visit the forest brook _soon_ for something beautiful!');
                 lastRainbowAlert = new Date();
+            }
+
+            if(isAfterResetTime && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
+                sendChannelMessageAlert('Happy reset! Visit #💡hints for information about daily quests, candles and more!');
+                lastGeneralChannelResetAlert = new Date();
             }
 
         }, 5 * oneMinuteInMs);
