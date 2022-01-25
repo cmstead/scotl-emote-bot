@@ -27,12 +27,15 @@ module.exports = function (client) {
     }
 
     function sendChannelMessageAlert(alertMessage) {
+        console.log(`send message request received: ${alertMessage}`);
         client.guilds.cache.forEach((guild) => {
             guild.fetch()
                 .then((fetchedGuild) => {
                     return fetchedGuild.channels.fetch();
                 })
                 .then((channels) => {
+                    console.log('attempting to send to channel');
+
                     const generalChannel = channels.find((channel) => channel.name.endsWith('general'))
 
                     if (generalChannel) {
