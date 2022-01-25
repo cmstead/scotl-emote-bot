@@ -34,7 +34,7 @@ module.exports = function (client) {
                 })
                 .then((channels) => {
                     const generalChannel = channels.find((channel) => {
-                        return channel.name === 'general'
+                        return channel.name.endsWith('general');
                     })
 
                     if(generalChannel) {
@@ -119,7 +119,7 @@ module.exports = function (client) {
                 lastRainbowAlert = new Date();
             }
 
-            if(isAfterResetTime && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
+            if(isAfterResetTime() && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
                 sendChannelMessageAlert('Happy reset! Visit #💡hints for information about daily quests, candles and more!');
                 lastGeneralChannelResetAlert = new Date();
             }
