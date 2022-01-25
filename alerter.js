@@ -1,5 +1,6 @@
 const { getCurrentPacificTime, getPacificTimeDifference } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
+const { getTime } = require('date-fns');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
 
@@ -81,6 +82,10 @@ module.exports = function (client) {
         return differenceInMilliseconds(new Date(), lastAlert) > offset * oneMinuteInMs;
     }
 
+    function getTimeToNextHour(minutes) {
+        return 60 - minutes;
+    }
+
     let lastGeyserAlert = new Date();
     let lastGrandmaAlert = new Date();
     let lastResetAlert = new Date();
@@ -96,23 +101,25 @@ module.exports = function (client) {
 
             const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
 
+            let messagesToSend = [];
+
             if (isOkayToAlert(lastDragonAlert) && isNearDragonTime(hour, minutes)) {
-                sendDirectMessageAlert('The Auspicious Spirit from Days of Fortune is visiting soon!');
+                messagesToSend.push(`The Auspicious spirit will be visiting in ${getTimeToNextHour(minutes)} minutes`)
                 lastDragonAlert = new Date();
             }
-
+            
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
-                sendDirectMessageAlert('The polluted geyser is erupting soon!');
+                messagesToSend.push(`The polluted geyser is erupting in ${getTimeToNextHour(minutes)} minutes`)
                 lastGeyserAlert = new Date();
             }
-
-            if (isNearGrandmaTime(hour, minutes) && isOkayToAlert(lastGrandmaAlert)) {
-                sendDirectMessageAlert('Grandma is serving a meal soon!');
+            
+            if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGrandmaAlert)) {
+                messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} minutes`)
                 lastGrandmaAlert = new Date();
             }
-
+            
             if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
-                sendDirectMessageAlert('Daily reset is happening soon!');
+                messagesToSend.push(`Daily reset is happening in ${getTimeToNextHour(minutes)} minutes`)
                 lastResetAlert = new Date();
             }
 
@@ -125,6 +132,8 @@ module.exports = function (client) {
                 sendChannelMessageAlert('Happy reset! Visit #💡hints for information about daily quests, candles and more!');
                 lastGeneralChannelResetAlert = new Date();
             }
+
+            sendDirectMessageAlert(messagesToSend.join('\n'));
 
         }, 5 * oneMinuteInMs);
 
