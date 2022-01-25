@@ -133,7 +133,9 @@ module.exports = function (client) {
                 lastGeneralChannelResetAlert = new Date();
             }
 
-            sendDirectMessageAlert(messagesToSend.join('\n'));
+            if(messagesToSend.length > 0) {
+                sendDirectMessageAlert(messagesToSend.join('\n'));
+            }
 
         }, 5 * oneMinuteInMs);
 
