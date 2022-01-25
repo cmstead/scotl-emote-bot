@@ -33,11 +33,10 @@ module.exports = function (client) {
                     return fetchedGuild.channels.fetch();
                 })
                 .then((channels) => {
-                    const generalChannel = channels.find((channel) => {
-                        return channel.name.endsWith('general');
-                    })
+                    const generalChannel = channels.find((channel) => channel.name.endsWith('general'))
 
-                    if(generalChannel) {
+                    if (generalChannel) {
+                        console.log(`sending daily reset message to ${generalChannel.name}`);
                         generalChannel.send(alertMessage);
                     }
                 })
@@ -68,7 +67,7 @@ module.exports = function (client) {
     }
 
     function isAfterResetTime(hour, minutes) {
-        return hour === 0 && minutes > 5;
+        return hour % 24 === 0 && minutes > 5;
     }
 
     function isNearForestRainbowTime(hour, minutes) {
@@ -119,7 +118,7 @@ module.exports = function (client) {
                 lastRainbowAlert = new Date();
             }
 
-            if(isAfterResetTime() && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
+            if (isAfterResetTime() && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
                 sendChannelMessageAlert('Happy reset! Visit #💡hints for information about daily quests, candles and more!');
                 lastGeneralChannelResetAlert = new Date();
             }
