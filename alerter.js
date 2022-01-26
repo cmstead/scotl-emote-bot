@@ -1,6 +1,6 @@
 const { getCurrentPacificTime, getPacificTimeDifference } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
-const { getTime } = require('date-fns');
+const { getWeather } = require('./weather');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
 
@@ -129,7 +129,14 @@ module.exports = function (client) {
             }
 
             if (isAfterResetTime() && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
-                sendChannelMessageAlert('Happy reset! Visit #💡hints for information about daily quests, candles and more!');
+                const resetAlertMessage = [
+                    'Happy reset! Visit #💡hints for information about daily quests, candles and more!',
+                    '',
+                    'It\'s another beautiful day in Sky!',
+                    getWeather()
+                ];
+
+                sendChannelMessageAlert(resetAlertMessage.join('\n'));
                 lastGeneralChannelResetAlert = new Date();
             }
 

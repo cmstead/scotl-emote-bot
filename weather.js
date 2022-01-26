@@ -4,8 +4,8 @@ function getWeather() {
     const currentDay = getCurrentPacificDay();
 
     return currentDay < 4
-        ? 'Expect rain at the Treehouse today'
-        : 'Expect dry weather at the Treehouse today';
+        ? 'Today at the Treehouse we can expect to see some rain'
+        : 'It\'ll be cloudy, but dry today at the Treehouse';
 }
 
 module.exports = {
