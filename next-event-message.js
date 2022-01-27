@@ -12,13 +12,21 @@ function nextGrandma(time) {
     if (isEvenHour && isHalfHour) {
         return `now`;
     } else if (isEvenHour && isBeforeHalfHour) {
-        return `in ${30 - minutes} minutes`;
+        const remainingMinutes = 30 - minutes;
+
+        return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else if (!isEvenHour && isBeforeHalfHour) {
-        return `in 1 hour, ${30 - minutes} minutes`;
+        const remainingMinutes = 30 - minutes;
+
+        return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else if (isEvenHour && !isBeforeHalfHour) {
-        return `in 1 hour, ${90 - minutes} minutes`;
+        const remainingMinutes = 90 - minutes;
+
+        return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else {
-        return `in ${90 - minutes} minutes`;
+        const remainingMinutes = 90 - minutes;
+
+        return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     }
 }
 
@@ -32,11 +40,15 @@ function nextGeyser(time) {
     if (isEvenHour && minutes === 0) {
         return `now`;
     } else if (isEvenHour) {
-        return `in 1 hour, ${60 - minutes} minutes`;
+        const remainingMinutes = 60 - minutes;
+
+        return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else if (!isEvenHour && minutes === 0) {
         return 'in 1 hour';
     } else {
-        return `in ${60 - minutes} minutes`;
+        const remainingMinutes = 60 - minutes;
+
+        return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     }
 }
 
@@ -48,10 +60,17 @@ function nextReset(time) {
     if(hours === 0 && minutes === 0) {
         return 'now';
     } else {
+        const remainingHours = minutes !== 0 ?  23 - hours : 24 - hours;
+        const remainingMinutes = 60 - minutes;
+
         return minutes !== 0 
-            ? `in ${23 - hours} hours, ${60 - minutes} minutes`
-            : `in ${24 - hours} hours`;
+            ? `in ${remainingHours} ${pluralize(remainingHours, 'hour')}, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`
+            : `in ${remainingHours} ${pluralize(remainingHours, 'hour')}`;
     }
+}
+
+function pluralize(time, word) {
+    return time === 1 ? word : `${word}s`;
 }
 
 function nextWeeklyReset(time) {
@@ -68,15 +87,15 @@ function nextWeeklyReset(time) {
     let remainingTime = [];
 
     if(remainingDays > 0) {
-        remainingTime.push(`${remainingDays} days`)
+        remainingTime.push(`${remainingDays} ${pluralize(remainingDays, 'day')}`)
     }
 
     if(remainingHours > 0) {
-        remainingTime.push(`${remainingHours} hours`);
+        remainingTime.push(`${remainingHours} ${pluralize(remainingHours, 'hour')}`);
     }
 
     if(remainingMinutes > 0) {
-        remainingTime.push(`${remainingMinutes} minutes`);
+        remainingTime.push(`${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`);
     }
 
     const remainingTimeString = remainingTime.join(', ');

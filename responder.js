@@ -29,11 +29,11 @@ ${waveUrl}`);
 
         const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
         if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
-            nextEventMessage = `Grandma is serving the next meal in ${nextGrandma(currentPacificTime)}`;
+            nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser will erupt again, ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
-            nextEventMessage = `Next daily reset in ${nextReset(currentPacificTime)}`
+            nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
             nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
         } else {
