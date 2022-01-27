@@ -13,8 +13,9 @@ function sendReponse(message, tokens) {
     if (tokens.length === 0) {
         const waveUrl = emotes.find(emote => emote.name === 'wave').url;
 
-        message.reply('\'Hi! Need help? Try "scotl help"');
-        message.reply(waveUrl);
+        message.reply(`'Hi! Need help? Try "scotl help"
+
+${waveUrl}`);
     } else if (phrase === 'help') {
         showHelp(message);
     } else if (phrase === 'list') {
@@ -40,7 +41,7 @@ function sendReponse(message, tokens) {
         message.reply(nextEventMessage);
     } else if (firstToken === 'weather') {
         message.reply(getWeather());
-    }else {
+    } else {
         message.reply('I don\'t know that one!')
     }
 }
