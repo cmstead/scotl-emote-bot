@@ -31,7 +31,7 @@ ${waveUrl}`);
         if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
             nextEventMessage = `Grandma is serving the next meal in ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
-            nextEventMessage = `The polluted geyser will erupt again, in ${nextGeyser(currentPacificTime)}`
+            nextEventMessage = `The polluted geyser will erupt again, ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next daily reset in ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
