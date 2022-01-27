@@ -128,7 +128,7 @@ module.exports = function (client) {
                 lastRainbowAlert = new Date();
             }
 
-            if (isAfterResetTime() && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
+            if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
                 const resetAlertMessage = [
                     'Happy reset! Visit #💡hints for information about daily quests, candles and more!',
                     '',
