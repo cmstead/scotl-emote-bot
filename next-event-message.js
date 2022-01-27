@@ -60,7 +60,7 @@ function nextWeeklyReset(time) {
 
     const timeTokens = time.split(':');
     const hours = parseInt(timeTokens[0]);
-    const remainingHours = 24 - hours;
+    const remainingHours = 23 - hours;
 
     const minutes = parseInt(timeTokens[1]);
     const remainingMinutes = 60 - minutes;
