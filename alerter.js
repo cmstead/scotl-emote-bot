@@ -85,9 +85,7 @@ module.exports = function (client) {
     }
 
     let lastGeyserAlert = new Date();
-    let lastGrandmaAlert = new Date();
     let lastRainbowAlert = new Date();
-    let lastDragonAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
     return function startAlertTimer() {
@@ -100,19 +98,15 @@ module.exports = function (client) {
 
             let messagesToSend = [];
 
-            if (isOkayToAlert(lastDragonAlert) && isNearDragonTime(hour, minutes)) {
+            if (isOkayToAlert(lastGeyserAlert) && isNearDragonTime(hour, minutes)) {
                 messagesToSend.push(`The Auspicious spirit will be visiting in ${getTimeToNextHour(minutes)} minutes`)
-                lastDragonAlert = new Date();
             }
             
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
                 messagesToSend.push(`The polluted geyser is erupting in ${getTimeToNextHour(minutes)} minutes`)
-                lastGeyserAlert = new Date();
-            }
-            
-            if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGrandmaAlert)) {
                 messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} minutes`)
-                lastGrandmaAlert = new Date();
+
+                lastGeyserAlert = new Date();
             }
 
             if (sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
