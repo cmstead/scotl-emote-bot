@@ -88,6 +88,10 @@ module.exports = function (client) {
     let lastRainbowAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
+    function pluralize(time, word) {
+        return time === 1 ? word : `${word}s`;
+    }
+    
     return function startAlertTimer() {
         setInterval(() => {
             const timeTokens = getCurrentPacificTime().split(':');
@@ -99,12 +103,16 @@ module.exports = function (client) {
             let messagesToSend = [];
 
             if (isOkayToAlert(lastGeyserAlert) && isNearDragonTime(hour, minutes)) {
-                messagesToSend.push(`The Auspicious spirit will be visiting in ${getTimeToNextHour(minutes)} minutes`)
+                const minutesToNextHour = getTimeToNextHour(minutes);
+                messagesToSend.push(`The Auspicious spirit will be visiting in ${minutesToNextHour} ${pluralize(minutesToNextHour, 'minute')}`)
             }
             
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
-                messagesToSend.push(`The polluted geyser is erupting in ${getTimeToNextHour(minutes)} minutes`)
-                messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} minutes`)
+                const geyserMinutes = getTimeToNextHour(minutes);
+                const grandmaMinutes = geyserMinutes + 30;
+
+                messagesToSend.push(`The polluted geyser is erupting in ${geyserMinutes} ${pluralize(geyserMinutes, 'minute')}`)
+                messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} ${pluralize(grandmaMinutes, 'minute')}`)
 
                 lastGeyserAlert = new Date();
             }
