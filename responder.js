@@ -1,4 +1,4 @@
-const { nextGrandma, nextGeyser, nextReset } = require('./next-event-message');
+const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset } = require('./next-event-message');
 const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
@@ -34,8 +34,10 @@ ${waveUrl}`);
             nextEventMessage = `Next geyser event in ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next reset event in ${nextReset(currentPacificTime)}`
+        } else if (eventToken.toLowerCase() === 'weekly') {
+            nextEventMessage = `Next weekly reset event ${nextWeeklyReset(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", or "reset".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", or "weekly".';
         }
 
         message.reply(nextEventMessage);

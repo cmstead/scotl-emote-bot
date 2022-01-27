@@ -1,3 +1,5 @@
+const { getCurrentPacificDay } = require("./datetime");
+
 function nextGrandma(time) {
     const timeTokens = time.split(':');
     const hours = parseInt(timeTokens[0]);
@@ -52,8 +54,39 @@ function nextReset(time) {
     }
 }
 
+function nextWeeklyReset(time) {
+    const currentDay = getCurrentPacificDay();
+    const remainingDays = 6 - currentDay;
+
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const remainingHours = 24 - hours;
+
+    const minutes = parseInt(timeTokens[1]);
+    const remainingMinutes = 60 - minutes;
+    
+    let remainingTime = [];
+
+    if(remainingDays > 0) {
+        remainingTime.push(`${remainingDays} days`)
+    }
+
+    if(remainingHours > 0) {
+        remainingTime.push(`${remainingHours} hours`);
+    }
+
+    if(remainingMinutes > 0) {
+        remainingTime.push(`${remainingMinutes} minutes`);
+    }
+
+    const remainingTimeString = remainingTime.join(', ');
+
+    return remainingTimeString !== '' ? `in ${remainingTimeString}` : 'now';
+}
+
 module.exports = {
     nextGrandma,
     nextGeyser,
-    nextReset
+    nextReset,
+    nextWeeklyReset
 };
