@@ -29,13 +29,13 @@ ${waveUrl}`);
 
         const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
         if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
-            nextEventMessage = `Next grandma event ${nextGrandma(currentPacificTime)}`;
+            nextEventMessage = `Grandma is serving the next meal in ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
-            nextEventMessage = `Next geyser event in ${nextGeyser(currentPacificTime)}`
+            nextEventMessage = `The polluted geyser will erupt again, in ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
-            nextEventMessage = `Next reset event in ${nextReset(currentPacificTime)}`
+            nextEventMessage = `Next daily reset in ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
-            nextEventMessage = `Next weekly reset event ${nextWeeklyReset(currentPacificTime)}`
+            nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
         } else {
             nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", or "weekly".';
         }
