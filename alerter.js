@@ -133,6 +133,9 @@ module.exports = function (client) {
                     resetAlertMessage.push('Eden is calling. If you choose that journey, take care of your ✨light✨.');
                 }
 
+                resetAlertMessage.push('');
+                resetAlertMessage.push('https://c.tenor.com/mPYZe9k-16MAAAAC/sky-children-skyheart.gif');
+
                 sendChannelMessageAlert(resetAlertMessage.join('\n'));
                 lastGeneralChannelResetAlert = new Date();
             }
