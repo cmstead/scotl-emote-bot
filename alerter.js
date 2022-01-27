@@ -1,4 +1,4 @@
-const { getCurrentPacificTime, getPacificTimeDifference } = require('./datetime');
+const { getCurrentPacificTime, getPacificTimeDifference, getCurrentPacificDay } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 const { getWeather } = require('./weather');
 
@@ -52,10 +52,6 @@ module.exports = function (client) {
     }
 
 
-    function isNearGrandmaTime(hour, minutes) {
-        return hour % 2 === 0 && minutes >= 15 && minutes < 30;
-    }
-
     function isNearGeyserTime(hour, minutes) {
         return hour % 2 === 1 && minutes >= 45;
     }
@@ -64,10 +60,6 @@ module.exports = function (client) {
         const endDate = "February 7, 2022 0:00:00";
 
         return hour % 2 === 1 && minutes >= 45 && getPacificTimeDifference(endDate);
-    }
-
-    function isNearResetTime(hour, minutes) {
-        return hour === 23 && minutes >= 45;
     }
 
     function isAfterResetTime(hour, minutes) {
@@ -86,9 +78,14 @@ module.exports = function (client) {
         return 60 - minutes;
     }
 
+    function isAfterEdenReset(hour, minutes) {
+        const pacificDay = getCurrentPacificDay();
+
+        return pacificDay === 0 && isAfterResetTime(hour, minutes);
+    }
+
     let lastGeyserAlert = new Date();
     let lastGrandmaAlert = new Date();
-    let lastResetAlert = new Date();
     let lastRainbowAlert = new Date();
     let lastDragonAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
@@ -117,11 +114,6 @@ module.exports = function (client) {
                 messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} minutes`)
                 lastGrandmaAlert = new Date();
             }
-            
-            if (isNearResetTime(hour, minutes) && isOkayToAlert(lastResetAlert)) {
-                messagesToSend.push(`Daily reset is happening in ${getTimeToNextHour(minutes)} minutes`)
-                lastResetAlert = new Date();
-            }
 
             if (sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
                 sendDirectMessageAlert('Visit the forest brook _soon_ for something beautiful!');
@@ -129,16 +121,23 @@ module.exports = function (client) {
             }
 
             if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
-                const resetAlertMessage = [
+                let resetAlertMessage = [
                     'Happy reset! Visit #💡hints for information about daily quests, candles and more!',
                     '',
                     'It\'s another beautiful day in Sky!',
                     getWeather()
                 ];
 
+                if(isAfterEdenReset(hour, minutes)) {
+                    resetAlertMessage.push('');
+                    resetAlertMessage.push('Eden is calling. If you choose that journey, take care of your ✨light✨.');
+                }
+
                 sendChannelMessageAlert(resetAlertMessage.join('\n'));
                 lastGeneralChannelResetAlert = new Date();
             }
+
+            
 
             if(messagesToSend.length > 0) {
                 sendDirectMessageAlert(messagesToSend.join('\n'));
