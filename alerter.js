@@ -70,6 +70,10 @@ module.exports = function (client) {
         return [4, 16].includes(hour) && minutes > 54;
     }
 
+    function isNearFairyRingTime(hour, minutes) {
+        return minutes > 40;
+    }
+
     function isOkayToAlert(lastAlert, offset = 20) {
         return differenceInMilliseconds(new Date(), lastAlert) > offset * oneMinuteInMs;
     }
@@ -86,19 +90,24 @@ module.exports = function (client) {
 
     let lastGeyserAlert = new Date();
     let lastRainbowAlert = new Date();
+    let lastFairyRingAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
     function pluralize(time, word) {
         return time === 1 ? word : `${word}s`;
     }
-    
+
+    function isRandomAlertTime(period, frequency) {
+        const selectedValue = Math.floor(Math.random() * period);
+
+        return selectedValue < frequency;
+    }
+
     return function startAlertTimer() {
         setInterval(() => {
             const timeTokens = getCurrentPacificTime().split(':');
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
-
-            const sendRandomAlert = Math.floor(Math.random() * 3) > 1;
 
             let messagesToSend = [];
 
@@ -117,9 +126,14 @@ module.exports = function (client) {
                 lastGeyserAlert = new Date();
             }
 
-            if (sendRandomAlert && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
-                sendDirectMessageAlert('Visit the forest brook _soon_ for something beautiful!');
+            if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
+                sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
                 lastRainbowAlert = new Date();
+            }
+
+            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert) && isNearFairyRingTime(hour, minutes)) {
+                sendChannelMessageAlert('Soon you may find the fairies\' ring on a daylight hill. Look near the butterflies which guide eight souls.');
+                lastFairyRingAlert = new Date();
             }
 
             if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
