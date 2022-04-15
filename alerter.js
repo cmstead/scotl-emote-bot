@@ -115,7 +115,7 @@ module.exports = function (client) {
                 const minutesToNextHour = getTimeToNextHour(minutes);
                 messagesToSend.push(`The Auspicious spirit will be visiting in ${minutesToNextHour} ${pluralize(minutesToNextHour, 'minute')}`)
             }
-            
+
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
                 const geyserMinutes = getTimeToNextHour(minutes);
                 const grandmaMinutes = geyserMinutes + 30;
@@ -131,7 +131,9 @@ module.exports = function (client) {
                 lastRainbowAlert = new Date();
             }
 
-            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert) && isNearFairyRingTime(hour, minutes)) {
+            const twelveHours = 12 * 60;
+            
+            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
                 sendChannelMessageAlert('Soon you may find the fairies\' ring on a daylight hill. Look near the butterflies which guide eight souls.');
                 lastFairyRingAlert = new Date();
             }
@@ -144,7 +146,7 @@ module.exports = function (client) {
                     getWeather()
                 ];
 
-                if(isAfterEdenReset(hour, minutes)) {
+                if (isAfterEdenReset(hour, minutes)) {
                     resetAlertMessage.push('');
                     resetAlertMessage.push('Eden is calling. If you choose that journey, take care of your ✨light✨.');
                 }
@@ -156,9 +158,9 @@ module.exports = function (client) {
                 lastGeneralChannelResetAlert = new Date();
             }
 
-            
 
-            if(messagesToSend.length > 0) {
+
+            if (messagesToSend.length > 0) {
                 sendDirectMessageAlert(messagesToSend.join('\n'));
             }
 

@@ -1,5 +1,9 @@
 module.exports = [
     {
+        name: 'alone',
+        url: 'https://y.yarn.co/53f69251-7873-4eb2-827c-53382ec4ec74_text.gif'
+    },
+    {
         name: 'confetti',
         url: 'https://c.tenor.com/I8z0Zbx88-kAAAAd/sky-children-of-the-light-sky-game.gif'
     },
