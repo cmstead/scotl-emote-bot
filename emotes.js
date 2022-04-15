@@ -63,4 +63,8 @@ module.exports = [
         name: 'wave',
         url: 'https://c.tenor.com/9KbJW2Ef_LAAAAAC/sky-children-of-the-light-wave.gif'
     },
+    {
+        name: 'breathe',
+        url: 'https://c.tenor.com/vwdGq-xHJTAAAAAd/exhale-calm.gif'
+    },
 ];

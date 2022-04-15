@@ -111,11 +111,6 @@ module.exports = function (client) {
 
             let messagesToSend = [];
 
-            if (isOkayToAlert(lastGeyserAlert) && isNearDragonTime(hour, minutes)) {
-                const minutesToNextHour = getTimeToNextHour(minutes);
-                messagesToSend.push(`The Auspicious spirit will be visiting in ${minutesToNextHour} ${pluralize(minutesToNextHour, 'minute')}`)
-            }
-
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
                 const geyserMinutes = getTimeToNextHour(minutes);
                 const grandmaMinutes = geyserMinutes + 30;
