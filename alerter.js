@@ -126,11 +126,11 @@ module.exports = function (client) {
             let messagesToSend = [];
 
             if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
-                const geyserMinutes = getTimeToNextHour(minutes);
+                const geyserMinutes = getTimeToNextHour(minutes) + 5;
                 const grandmaMinutes = geyserMinutes + 30;
 
                 messagesToSend.push(`The polluted geyser is erupting in ${geyserMinutes} ${pluralize(geyserMinutes, 'minute')}`)
-                messagesToSend.push(`Grandma is serving a meal in ${getTimeToNextHour(minutes) + 30} ${pluralize(grandmaMinutes, 'minute')}`)
+                messagesToSend.push(`Grandma is serving a meal in ${grandmaMinutes} ${pluralize(grandmaMinutes, 'minute')}`)
 
                 lastGeyserAlert = new Date();
             }

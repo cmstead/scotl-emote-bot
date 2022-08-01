@@ -6,25 +6,25 @@ function nextGrandma(time) {
     const minutes = parseInt(timeTokens[1]);
 
     const isEvenHour = hours % 2 === 0;
-    const isHalfHour = 30 - minutes === 0;
-    const isBeforeHalfHour = 30 - minutes >= 0;
+    const isHalfHour = 35 - minutes === 0;
+    const isBeforeHalfHour = 35 - minutes >= 0;
 
     if (isEvenHour && isHalfHour) {
         return `now`;
     } else if (isEvenHour && isBeforeHalfHour) {
-        const remainingMinutes = 30 - minutes;
+        const remainingMinutes = 35 - minutes;
 
         return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else if (!isEvenHour && isBeforeHalfHour) {
-        const remainingMinutes = 30 - minutes;
+        const remainingMinutes = 35 - minutes;
 
         return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else if (isEvenHour && !isBeforeHalfHour) {
-        const remainingMinutes = 90 - minutes;
+        const remainingMinutes = 95 - minutes;
 
         return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     } else {
-        const remainingMinutes = 90 - minutes;
+        const remainingMinutes = 95 - minutes;
 
         return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     }
@@ -97,16 +97,16 @@ function nextGeyser(time) {
 
     const isEvenHour = hours % 2 === 0;
 
-    if (isEvenHour && minutes === 0) {
+    if (isEvenHour && minutes === 5) {
         return `now`;
     } else if (isEvenHour) {
-        const remainingMinutes = 60 - minutes;
+        const remainingMinutes = 65 - minutes;
 
         return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
-    } else if (!isEvenHour && minutes === 0) {
+    } else if (!isEvenHour && minutes === 5) {
         return 'in 1 hour';
     } else {
-        const remainingMinutes = 60 - minutes;
+        const remainingMinutes = 65 - minutes;
 
         return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
     }

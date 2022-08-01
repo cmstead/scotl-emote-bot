@@ -4,7 +4,7 @@ const { nextGrandma, nextGeyser, nextReset, nextShard } = require('../next-event
 describe('SCOTL next event command', function () {
     describe('next grandma event', function () {
         it('returns now when current time matches expected event period', function () {
-            const computedCurrentTime = '2:30';
+            const computedCurrentTime = '2:35';
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
             assert.equal(eventNotificationMessage, 'now');
@@ -14,28 +14,28 @@ describe('SCOTL next event command', function () {
             const computedCurrentTime = '2:15';
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 15 minutes');
+            assert.equal(eventNotificationMessage, 'in 20 minutes');
         });
 
         it('returns returns correct next event time on the even hour after the half hour', function () {
             const computedCurrentTime = '2:37';
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 1 hour, 53 minutes');
+            assert.equal(eventNotificationMessage, 'in 1 hour, 58 minutes');
         });
 
         it('returns returns correct next event time on the odd hour before the half hour', function () {
             const computedCurrentTime = '1:27';
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 1 hour, 3 minutes');
+            assert.equal(eventNotificationMessage, 'in 1 hour, 8 minutes');
         });
 
         it('returns returns correct next event time on the odd hour after the half hour', function () {
             const computedCurrentTime = '1:42';
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 48 minutes');
+            assert.equal(eventNotificationMessage, 'in 53 minutes');
         });
     });
 
@@ -78,7 +78,7 @@ describe('SCOTL next event command', function () {
 
     describe('next geyser event', function () {
         it('returns now when current time matches expected event period', function () {
-            const computedCurrentTime = '2:00';
+            const computedCurrentTime = '2:05';
             const eventNotificationMessage = nextGeyser(computedCurrentTime);
 
             assert.equal(eventNotificationMessage, 'now');
@@ -88,18 +88,18 @@ describe('SCOTL next event command', function () {
             const computedCurrentTime = '2:15';
             const eventNotificationMessage = nextGeyser(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 1 hour, 45 minutes');
+            assert.equal(eventNotificationMessage, 'in 1 hour, 50 minutes');
         });
 
         it('returns returns correct next event time on the odd hour not on the hour', function () {
             const computedCurrentTime = '1:27';
             const eventNotificationMessage = nextGeyser(computedCurrentTime);
 
-            assert.equal(eventNotificationMessage, 'in 33 minutes');
+            assert.equal(eventNotificationMessage, 'in 38 minutes');
         });
 
         it('returns returns correct next event time on the odd hour on the hour', function () {
-            const computedCurrentTime = '1:00';
+            const computedCurrentTime = '1:05';
             const eventNotificationMessage = nextGeyser(computedCurrentTime);
 
             assert.equal(eventNotificationMessage, 'in 1 hour');
