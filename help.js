@@ -21,6 +21,7 @@ You can ask about the next Grandma, Geyser, or Daily Reset event in the followin
 \`scotl next gma\`
 \`scotl next geyser\`
 \`scotl next reset\`
+\`scotl next shard\`
 \`scotl next weekly\`
 
 **Show Emote:**

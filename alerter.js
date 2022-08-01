@@ -1,6 +1,7 @@
 const { getCurrentPacificTime, getPacificTimeDifference, getCurrentPacificDay } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 const { getWeather } = require('./weather');
+const { nextShard } = require('./next-event-message');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
 
@@ -52,14 +53,26 @@ module.exports = function (client) {
     }
 
 
+    function isEvenHour(hour) {
+        return hour % 2 === 0;
+    }
+
+    function isOddHour(hour) {
+        return !isEvenHour(hour);
+    }
+
+    function isNearShardTime(hour, minutes) {
+        return isEvenHour(hour) && minutes >= 40;
+    }
+
     function isNearGeyserTime(hour, minutes) {
-        return hour % 2 === 1 && minutes >= 45;
+        return isOddHour(hour) && minutes >= 45;
     }
 
     function isNearDragonTime(hour, minutes) {
         const endDate = "February 7, 2022 0:00:00";
 
-        return hour % 2 === 1 && minutes >= 45 && getPacificTimeDifference(endDate);
+        return isOddHour(hour) && minutes >= 45 && getPacificTimeDifference(endDate);
     }
 
     function isAfterResetTime(hour, minutes) {
@@ -71,6 +84,10 @@ module.exports = function (client) {
     }
 
     function isNearFairyRingTime(hour, minutes) {
+        return minutes > 40;
+    }
+
+    function isNearSunsetTime(hour, minutes) {
         return minutes > 40;
     }
 
@@ -88,8 +105,10 @@ module.exports = function (client) {
         return pacificDay === 0 && isAfterResetTime(hour, minutes);
     }
 
+    let lastShardAlert = new Date();
     let lastGeyserAlert = new Date();
     let lastRainbowAlert = new Date();
+    let lastSunsetAlert = new Date();
     let lastFairyRingAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
@@ -105,7 +124,8 @@ module.exports = function (client) {
 
     return function startAlertTimer() {
         setInterval(() => {
-            const timeTokens = getCurrentPacificTime().split(':');
+            const currentTime = getCurrentPacificTime();
+            const timeTokens = currentTime.split(':');
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
@@ -121,16 +141,28 @@ module.exports = function (client) {
                 lastGeyserAlert = new Date();
             }
 
+            if (isNearShardTime(hour, minutes) && isOkayToAlert(lastShardAlert)) {
+                messagesToSend.push(`The next shard event is starting ${nextShard(currentTime)}`)
+
+                lastShardAlert = new Date();
+            }
+
             if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
                 sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
                 lastRainbowAlert = new Date();
             }
 
             const twelveHours = 12 * 60;
-            
+
             if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
-                sendChannelMessageAlert('Soon you may find the fairies\' ring on a daylight hill. Look near the butterflies which guide eight souls.');
+                sendChannelMessageAlert('Visit the hill above the 8-player door _soon_ for a little magic!');
                 lastFairyRingAlert = new Date();
+            }
+
+            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {
+                sendChannelMessageAlert('Visit Sanctuary Islands _soon_ for something wonderful!');
+
+                lastSunsetAlert = new Date();
             }
 
             if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
