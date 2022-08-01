@@ -33,7 +33,7 @@ ${waveUrl}`);
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser will erupt again, ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'shard') {
-            nextEventMessage = `The next shard event will start ${nextGeyser(currentPacificTime)}`
+            nextEventMessage = `The next shard event will start ${nextShard(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
