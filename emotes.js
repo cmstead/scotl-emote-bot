@@ -67,4 +67,12 @@ module.exports = [
         name: 'breathe',
         url: 'https://c.tenor.com/vwdGq-xHJTAAAAAd/exhale-calm.gif'
     },
+    {
+        name: 'wlconfetti',
+        url: 'https://c.tenor.com/jly0ldgtgBkAAAAC/krill-sky.gif'
+    },
+    {
+        name: 'krilled',
+        url: 'https://c.tenor.com/jly0ldgtgBkAAAAC/krill-sky.gif'
+    },
 ];
