@@ -34,14 +34,14 @@ ${waveUrl}`);
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'shard') {
             nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
-        } else if (eventToken.toLowerCase() === 'shard') {
+        } else if (eventToken.toLowerCase() === 'sunset') {
             nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
             nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", sunset, or "weekly".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", "sunset", or "weekly".';
         }
 
         message.reply(nextEventMessage);
