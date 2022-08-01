@@ -39,7 +39,7 @@ ${waveUrl}`);
         } else if (eventToken.toLowerCase() === 'weekly') {
             nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", or "weekly".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", or "weekly".';
         }
 
         message.reply(nextEventMessage);
