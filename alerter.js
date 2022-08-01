@@ -69,12 +69,6 @@ module.exports = function (client) {
         return isOddHour(hour) && minutes >= 45;
     }
 
-    function isNearDragonTime(hour, minutes) {
-        const endDate = "February 7, 2022 0:00:00";
-
-        return isOddHour(hour) && minutes >= 45 && getPacificTimeDifference(endDate);
-    }
-
     function isAfterResetTime(hour, minutes) {
         return hour % 24 === 0 && minutes > 5;
     }
@@ -88,7 +82,7 @@ module.exports = function (client) {
     }
 
     function isNearSunsetTime(hour, minutes) {
-        return minutes > 40;
+        return isEvenHour(hour) && minutes > 40 && minutes < 55;
     }
 
     function isOkayToAlert(lastAlert, offset = 20) {
