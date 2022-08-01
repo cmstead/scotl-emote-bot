@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const { nextGrandma, nextGeyser, nextReset } = require('../next-event-message');
+const { nextGrandma, nextGeyser, nextReset, nextShard } = require('../next-event-message');
 
 describe('SCOTL next event command', function () {
     describe('next grandma event', function () {
@@ -36,6 +36,43 @@ describe('SCOTL next event command', function () {
             const eventNotificationMessage = nextGrandma(computedCurrentTime);
 
             assert.equal(eventNotificationMessage, 'in 48 minutes');
+        });
+    });
+
+    describe('next shard event', function () {
+        it('returns now when current time matches expected event period', function () {
+            const computedCurrentTime = '2:50';
+            const eventNotificationMessage = nextShard(computedCurrentTime);
+
+            assert.equal(eventNotificationMessage, 'now');
+        });
+
+        it('returns returns correct next event time during the even hour before the event begins', function () {
+            const computedCurrentTime = '2:40';
+            const eventNotificationMessage = nextShard(computedCurrentTime);
+
+            assert.equal(eventNotificationMessage, 'in 10 minutes');
+        });
+
+        it('returns returns correct next event time on the even hour after the fifty minute mark', function () {
+            const computedCurrentTime = '2:57';
+            const eventNotificationMessage = nextShard(computedCurrentTime);
+
+            assert.equal(eventNotificationMessage, 'in 1 hour, 53 minutes');
+        });
+
+        it('returns returns correct next event time on the odd hour', function () {
+            const computedCurrentTime = '1:00';
+            const eventNotificationMessage = nextShard(computedCurrentTime);
+
+            assert.equal(eventNotificationMessage, 'in 1 hour, 50 minutes');
+        });
+
+        it('returns returns correct next event time on the odd hour after the fifty minute mark', function () {
+            const computedCurrentTime = '1:52';
+            const eventNotificationMessage = nextShard(computedCurrentTime);
+
+            assert.equal(eventNotificationMessage, 'in 58 minutes');
         });
     });
 

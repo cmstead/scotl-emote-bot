@@ -30,6 +30,36 @@ function nextGrandma(time) {
     }
 }
 
+function nextShard(time) {
+    const timeTokens = time.split(':');
+    const hours = parseInt(timeTokens[0]);
+    const minutes = parseInt(timeTokens[1]);
+    
+    const isEvenHour = hours % 2 === 0;
+    const isFiftyMinuteMark = 50 - minutes === 0;
+    const isBeforeFiftyMinuteMark = 50 - minutes > 0;
+
+    if(isEvenHour && isFiftyMinuteMark) {
+        return 'now';
+    } else if(isEvenHour && isBeforeFiftyMinuteMark) {
+        const remainingMinutes = 50 - minutes;
+
+        return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`; 
+    } else if(isEvenHour && !isBeforeFiftyMinuteMark) {
+        const remainingMinutes = 60 - (minutes - 50);
+
+        return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`;
+    } else if(!isEvenHour && isBeforeFiftyMinuteMark) {
+        const remainingMinutes = 50 - minutes;
+
+        return `in 1 hour, ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`
+    } else {
+        const remainingMinutes = 60 - (minutes - 50);
+
+        return `in ${remainingMinutes} ${pluralize(remainingMinutes, 'minute')}`
+    }
+}
+
 function nextGeyser(time) {
     const timeTokens = time.split(':');
     const hours = parseInt(timeTokens[0]);
@@ -107,5 +137,6 @@ module.exports = {
     nextGrandma,
     nextGeyser,
     nextReset,
-    nextWeeklyReset
+    nextWeeklyReset,
+    nextShard
 };
