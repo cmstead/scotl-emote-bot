@@ -1,4 +1,4 @@
-const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextShard } = require('./next-event-message');
+const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextShard, nextSunset } = require('./next-event-message');
 const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
@@ -31,15 +31,17 @@ ${waveUrl}`);
         if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
-            nextEventMessage = `The polluted geyser will erupt again, ${nextGeyser(currentPacificTime)}`
+            nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'shard') {
-            nextEventMessage = `The next shard event will start ${nextShard(currentPacificTime)}`
+            nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
+        } else if (eventToken.toLowerCase() === 'shard') {
+            nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
             nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
         } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", or "weekly".';
+            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", sunset, or "weekly".';
         }
 
         message.reply(nextEventMessage);
