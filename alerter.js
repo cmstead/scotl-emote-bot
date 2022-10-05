@@ -135,11 +135,11 @@ module.exports = function (client) {
                 lastGeyserAlert = new Date();
             }
 
-            if (isNearShardTime(hour, minutes) && isOkayToAlert(lastShardAlert)) {
-                messagesToSend.push(`The next shard event is starting ${nextShard(currentTime)}`)
+            // if (isNearShardTime(hour, minutes) && isOkayToAlert(lastShardAlert)) {
+            //     messagesToSend.push(`The next shard event is starting ${nextShard(currentTime)}`)
 
-                lastShardAlert = new Date();
-            }
+            //     lastShardAlert = new Date();
+            // }
 
             if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
                 sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
