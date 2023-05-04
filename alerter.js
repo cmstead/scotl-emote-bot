@@ -1,4 +1,4 @@
-const { getCurrentPacificTime, getPacificTimeDifference, getCurrentPacificDay } = require('./datetime');
+const { getCurrentPacificTime, getPacificTimeDifference, getCurrentPacificDay, getCurrentGMTDay } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 const { getWeather } = require('./weather');
 const { nextShard } = require('./next-event-message');
@@ -61,10 +61,6 @@ module.exports = function (client) {
         return !isEvenHour(hour);
     }
 
-    function isNearShardTime(hour, minutes) {
-        return isEvenHour(hour) && minutes >= 40;
-    }
-
     function isNearGeyserTime(hour, minutes) {
         return isOddHour(hour) && minutes >= 45;
     }
@@ -99,11 +95,15 @@ module.exports = function (client) {
         return pacificDay === 0 && isAfterResetTime(hour, minutes);
     }
 
-    let lastShardAlert = new Date();
+    function isGMTSaturday(){
+        return getCurrentGMTDay() === 6;
+    }
+
     let lastGeyserAlert = new Date();
     let lastRainbowAlert = new Date();
     let lastSunsetAlert = new Date();
     let lastFairyRingAlert = new Date();
+    let lastFashionDayAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
     function pluralize(time, word) {
@@ -135,12 +135,6 @@ module.exports = function (client) {
                 lastGeyserAlert = new Date();
             }
 
-            // if (isNearShardTime(hour, minutes) && isOkayToAlert(lastShardAlert)) {
-            //     messagesToSend.push(`The next shard event is starting ${nextShard(currentTime)}`)
-
-            //     lastShardAlert = new Date();
-            // }
-
             if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
                 sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
                 lastRainbowAlert = new Date();
@@ -151,6 +145,12 @@ module.exports = function (client) {
             if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
                 sendChannelMessageAlert('Visit the hill above the 8-player door _soon_ for a little magic!');
                 lastFairyRingAlert = new Date();
+            }
+
+            const twentyFourHours = 24 * 60
+
+            if(isOkayToAlert(lastFashionDayAlert, twentyFourHours) && isGMTSaturday()) {
+                sendChannelMessageAlert(`It's Saturday somewhere! Post your Stunning Saturday photos in #👗fashion!`);
             }
 
             if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {

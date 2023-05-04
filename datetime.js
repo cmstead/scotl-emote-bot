@@ -2,6 +2,7 @@ const dateFnsTz = require('date-fns-tz');
 const dateFns = require('date-fns');
 
 const US_PACIFIC_TIME_ZONE = 'America/Los_Angeles';
+const GMT = 
 function getCurrentPacificTime() {
     const currentDate = new Date();
     const timePattern = 'HH:mm';
@@ -16,6 +17,14 @@ function getCurrentPacificDay() {
     const currentDate = new Date();
     const timePattern = 'i';
     const dayIndicator = dateFnsTz.formatInTimeZone(currentDate, US_PACIFIC_TIME_ZONE, timePattern);
+
+    return getSundayAsZeroIndexDay(dayIndicator);
+}
+
+function getCurrentGMTDay() {
+    currentDate = newDate();
+    const timePattern = 'i';
+    const dayIndicator = dateFnsTz.format(currentDate, timePattern);
 
     return getSundayAsZeroIndexDay(dayIndicator);
 }
@@ -35,6 +44,7 @@ function getPacificTimeDifference(expectedDateString) {
 }
 
 module.exports = {
+    getCurrentGMTDay,
     getCurrentPacificTime,
     getCurrentPacificDay,
     getPacificTimeDifference
