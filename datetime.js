@@ -2,7 +2,6 @@ const dateFnsTz = require('date-fns-tz');
 const dateFns = require('date-fns');
 
 const US_PACIFIC_TIME_ZONE = 'America/Los_Angeles';
-const GMT = 
 function getCurrentPacificTime() {
     const currentDate = new Date();
     const timePattern = 'HH:mm';
