@@ -2,11 +2,11 @@
   "name": "scotl-bot",
   "version": "1.23.0",
   "description": "",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha ./tests/**/*.test.js",
-    "start:local": "nodemon bot.js",
-    "start": "node bot.js"
+    "start:local": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "Chris Stead",
   "license": "MIT",
