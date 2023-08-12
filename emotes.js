@@ -68,6 +68,18 @@ module.exports = [
         url: 'https://c.tenor.com/vwdGq-xHJTAAAAAd/exhale-calm.gif'
     },
     {
+        name: 'calm',
+        url: 'https://c.tenor.com/vwdGq-xHJTAAAAAd/exhale-calm.gif'
+    },
+    {
+        name: 'shrug',
+        url: 'https://media.tenor.com/EeAG9OUMsd8AAAAC/sky-cotl-shrug-sky-cotl-whatever.gif'
+    },
+    {
+        name: 'laugh',
+        url: 'https://media.tenor.com/sipE03_S3x0AAAAC/thatskygame-sky-children-of-the-light.gif'
+    },
+    {
         name: 'wlconfetti',
         url: 'https://c.tenor.com/jly0ldgtgBkAAAAC/krill-sky.gif'
     },
