@@ -81,7 +81,7 @@ module.exports = [
     },
     {
         name: 'jolly',
-        url: 'https://skycotlguide.files.wordpress.com/2023/08/moth_jollydance.gif'
+        url: 'https://sky-clock.netlify.app/images/scotl-bot-emotes/moth_jollydance.gif'
     },
     {
         name: 'chad',
