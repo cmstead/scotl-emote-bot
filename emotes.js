@@ -80,6 +80,22 @@ module.exports = [
         url: 'https://media.tenor.com/sipE03_S3x0AAAAC/thatskygame-sky-children-of-the-light.gif'
     },
     {
+        name: 'jolly',
+        url: 'https://skycotlguide.files.wordpress.com/2023/08/moth_jollydance.gif'
+    },
+    {
+        name: 'chad',
+        url: 'https://media.tenor.com/1qdtcwBiDcUAAAAS/gigachad-prophecy-guide-sky-children-of-the-light.gif'
+    },
+    {
+        name: 'geyser',
+        url: 'https://media.tenor.com/zzXzMf3J8q4AAAAS/sky-cotl-dorqui.gif'
+    },
+    {
+        name: 'burn',
+        url: 'https://tenor.com/view/sky-children-of-light-moth-burn-elmo-gif-20806936'
+    },
+    {
         name: 'wlconfetti',
         url: 'https://c.tenor.com/jly0ldgtgBkAAAAC/krill-sky.gif'
     },
