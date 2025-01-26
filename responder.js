@@ -13,7 +13,7 @@ function sendReponse(message, tokens, client) {
     if (tokens.length === 0) {
         const waveUrl = emotes.find(emote => emote.name === 'wave').url;
 
-        message.reply(`'Hi! Need help? Try "scotl help"
+        message.author.send(`'Hi! Need help? Try "scotl help"
 
 ${waveUrl}`);
     } else if (phrase === 'help') {
@@ -34,7 +34,6 @@ ${waveUrl}`);
             content: `<@${message.author.id}> says:\n${tokens.slice(1).join(' ')}\n\n`,
             embeds: [embed]
         });
-        message.delete();
     } else if (firstToken === 'next') {
         const currentPacificTime = getCurrentPacificTime();
 
@@ -57,12 +56,14 @@ ${waveUrl}`);
             nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", "sunset", or "weekly".';
         }
 
-        message.reply(nextEventMessage);
+        message.author.send(nextEventMessage);
     } else if (firstToken === 'weather') {
-        message.reply(getWeather());
+        message.author.send(getWeather());
     } else {
-        message.reply('I don\'t know that one!')
+        message.author.send(`I don\'t know ${firstToken}!`);
     }
+  
+    message.delete();
 }
 
 module.exports = {
