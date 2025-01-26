@@ -5,14 +5,17 @@ module.exports = function (client) {
         const destinationChannel = guild.channels.cache.find(channel => channel.name.endsWith('tips-board'));
 
         const tipContent = `by: ${message.author.username}\n${message.content}`;
+        const tipAttachments = message.attachments.map(attachment => attachment.url);
+        const embeds = message.embeds
+        
+        message.delete();
 
         destinationChannel.send({
             content: tipContent,
-            files: message.attachments.map(attachment => attachment.url),
-            embeds: message.embeds
+            files: tipAttachments,
+            embeds: embeds
         });
 
-        message.delete();
     }
 
     return {
