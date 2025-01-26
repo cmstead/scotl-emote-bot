@@ -40,7 +40,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    const tokens = msg.content.toLowerCase().split(' ');
+    const tokens = msg.content.split(' ');
 
     const guild = client.guilds.cache.get(msg.guild.id);
     const submitATipChannel = guild.channels.cache.find(channel => channel.name.endsWith('submit-a-tip'));
