@@ -24,14 +24,25 @@ ${waveUrl}`);
         const guild = client.guilds.cache.get(message.guild.id);
         const channel = guild.channels.cache.get(message.channelId);
 
+        console.log(message.id);
+        console.log(message.reactions.message.mentions.repliedUser);
+        console.log(message.reactions.message.reactions);
+
+        const repliedUser = message.reactions.message.mentions.repliedUser;
+        const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
+
         const embed = {
+            author:{
+                name: message.author.username,
+                icon_url: message.author.avatarURL()
+            },
+            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n\n`,
             image: {
                 url: emote.url
             }
         };
 
         channel.send({
-            content: `<@${message.author.id}> says:\n${tokens.slice(1).join(' ')}\n\n`,
             embeds: [embed]
         });
     } else if (firstToken === 'next') {
