@@ -1,7 +1,6 @@
-const { getCurrentPacificTime, getPacificTimeDifference, getCurrentPacificDay, getCurrentGMTDay } = require('./datetime');
+const { getCurrentPacificTime, getCurrentPacificDay, getCurrentGMTDay } = require('./datetime');
 const differenceInMilliseconds = require('date-fns/differenceInMilliseconds');
 const { getWeather } = require('./weather');
-const { nextShard } = require('./next-event-message');
 
 const SCOTL_ALERT_ROLE = 'SCOTL Alerts';
 

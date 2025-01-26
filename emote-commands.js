@@ -10,7 +10,7 @@ function listEmotes(message) {
     const availableEmotes = emotes.map(emote => emote.name);
     availableEmotes.sort();
 
-    message.reply(`
+    message.author.send(`
 Here are the emotes I know:
 
 ${availableEmotes.join('\n')}

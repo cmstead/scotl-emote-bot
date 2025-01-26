@@ -1,5 +1,4 @@
-function showHelp(message) {
-    message.reply(`
+const helpContent = `
 **Commands:**
 
 \`help\`
@@ -34,7 +33,10 @@ Examples:
 \`scotl cry\`
 \`scotl confetti\`
 \`scotl bow\`
-`);
+`;
+
+function showHelp(message) {
+    message.author.send(helpContent);
 }
 
 module.exports = {
