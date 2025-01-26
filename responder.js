@@ -5,7 +5,7 @@ const { getCurrentPacificTime } = require('./datetime');
 const { getWeather } = require('./weather');
 const emotes = require('./emotes');
 
-function sendReponse(message, tokens) {
+function sendReponse(message, tokens, client) {
     const phrase = tokens.join(' ');
     const emote = findEmote(tokens);
     const firstToken = typeof tokens[0] === 'string' ? tokens[0].toLowerCase() : '';
@@ -21,7 +21,8 @@ ${waveUrl}`);
     } else if (phrase === 'list') {
         listEmotes(message);
     } else if (typeof emote === 'object') {
-        message.reply(emote.url);
+        message.edit(emote.url)
+            .catch(() => { console.error('error editing emote message', message.content) });
     } else if (firstToken === 'next') {
         const currentPacificTime = getCurrentPacificTime();
 
@@ -32,8 +33,8 @@ ${waveUrl}`);
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
-        // } else if (eventToken.toLowerCase() === 'shard') {
-        //     nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
+            // } else if (eventToken.toLowerCase() === 'shard') {
+            //     nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'sunset') {
             nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {

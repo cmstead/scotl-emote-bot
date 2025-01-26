@@ -49,7 +49,7 @@ client.on('message', msg => {
     const tipsBoardChannelId = tipsBoardChannel.id;
 
     if (tokens[0] === 'scotl') {
-        sendReponse(msg, tokens.slice(1));
+        sendReponse(msg, tokens.slice(1), client);
     } else if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
     } else if (msg.channelId === tipsBoardChannelId && msg.author.id !== '925464580644294707') {
