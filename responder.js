@@ -25,7 +25,7 @@ ${waveUrl}`);
         const channel = guild.channels.cache.get(message.channelId);
         
         channel.send({
-            content: `<@${message.author.id}> says:\n${emote.url}`
+            content: `<@${message.author.id}> says: ${tokens.slice(2).join(' ')}\n${emote.url}`
         });
         message.delete();
     } else if (firstToken === 'next') {
