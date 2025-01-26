@@ -24,7 +24,9 @@ ${waveUrl}`);
         const guild = client.guilds.cache.get(message.guild.id);
         const channel = guild.channels.cache.get(message.channelId);
         
-        channel.send(`${message.author.name} says\n${emote.url}`);
+        channel.send({
+            content: `${message.author.username} says:\n${emote.url}`
+        });
         message.delete();
     } else if (firstToken === 'next') {
         const currentPacificTime = getCurrentPacificTime();
