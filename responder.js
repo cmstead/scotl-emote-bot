@@ -7,7 +7,7 @@ const emotes = require('./emotes');
 
 function sendReponse(message, tokens, client) {
     const phrase = tokens.join(' ');
-    const emote = findEmote(tokens);
+    const emote = findEmote([tokens[0]]);
     const firstToken = typeof tokens[0] === 'string' ? tokens[0].toLowerCase() : '';
 
     if (tokens.length === 0) {
@@ -25,7 +25,7 @@ ${waveUrl}`);
         const channel = guild.channels.cache.get(message.channelId);
         
         channel.send({
-            content: `<@${message.author.id}> says:\n${emote.url}`
+            content: `<@${message.author.id}> says: ${tokens.slice(1).join(' ')}\n\n${emote.url}`
         });
         message.delete();
     } else if (firstToken === 'next') {
