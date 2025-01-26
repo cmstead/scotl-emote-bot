@@ -24,8 +24,15 @@ ${waveUrl}`);
         const guild = client.guilds.cache.get(message.guild.id);
         const channel = guild.channels.cache.get(message.channelId);
 
+        const embed = {
+            image: {
+                url: emote.url
+            }
+        };
+
         channel.send({
-            content: `<@${message.author.id}> says:\n${tokens.slice(1).join(' ')}\n\n${emote.url}`
+            content: `<@${message.author.id}> says:\n${tokens.slice(1).join(' ')}\n\n`,
+            embeds: [embed]
         });
         message.delete();
     } else if (firstToken === 'next') {
