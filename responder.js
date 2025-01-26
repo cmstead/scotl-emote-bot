@@ -23,9 +23,9 @@ ${waveUrl}`);
     } else if (typeof emote === 'object') {
         const guild = client.guilds.cache.get(message.guild.id);
         const channel = guild.channels.cache.get(message.channelId);
-        
+
         channel.send({
-            content: `<@${message.author.id}> says: ${tokens.slice(2).join(' ')}\n\n${emote.url}`
+            content: `<@${message.author.id}> says: ${tokens.slice(1).join(' ')}\n\n${emote.url}`
         });
         message.delete();
     } else if (firstToken === 'next') {
@@ -38,8 +38,8 @@ ${waveUrl}`);
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
-        // } else if (eventToken.toLowerCase() === 'shard') {
-        //     nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
+            // } else if (eventToken.toLowerCase() === 'shard') {
+            //     nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'sunset') {
             nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {

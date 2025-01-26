@@ -45,8 +45,8 @@ client.on('message', msg => {
     const guild = client.guilds.cache.get(msg.guild.id);
     const submitATipChannel = guild.channels.cache.find(channel => channel.name.endsWith('submit-a-tip'));
     const tipsBoardChannel = guild.channels.cache.find(channel => channel.name.endsWith('tips-board'));
-    const submitATipChannelId = submitATipChannel.id;
-    const tipsBoardChannelId = tipsBoardChannel.id;
+    const submitATipChannelId = submitATipChannel?.id;
+    const tipsBoardChannelId = tipsBoardChannel?.id;
 
     if (tokens[0] === 'scotl') {
         sendReponse(msg, tokens.slice(1), client);
@@ -63,5 +63,5 @@ process
     console.error('Unhandled Rejection at Promise');
   })
   .on('uncaughtException', err => {
-    console.error('Uncaught Exception thrown', err.message);
+    console.error('Uncaught Exception thrown', err);
   });
