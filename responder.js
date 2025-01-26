@@ -7,7 +7,7 @@ const emotes = require('./emotes');
 
 function sendReponse(message, tokens, client) {
     const phrase = tokens.join(' ');
-    const emote = findEmote(tokens);
+    const emote = findEmote([tokens[0]]);
     const firstToken = typeof tokens[0] === 'string' ? tokens[0].toLowerCase() : '';
 
     if (tokens.length === 0) {
