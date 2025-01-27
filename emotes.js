@@ -56,6 +56,10 @@ module.exports = [
         url: 'https://media.tenor.com/zzXzMf3J8q4AAAAS/sky-cotl-dorqui.gif'
     },
     {
+        name: 'giveup',
+        url: 'https://media1.tenor.com/m/iMIcmW9uKp8AAAAd/quit-sky-cotl.gif'
+    },
+    {
         name: 'hug',
         url: 'https://c.tenor.com/R0jNU2YE79EAAAAd/loffi-sky-emote-sky-children-of-the-light.gif'
     },
