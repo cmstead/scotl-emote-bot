@@ -39,7 +39,10 @@ You can ask about the next upcoming daily events this way:
 
 function showHelp(message) {
     message.author.send({
-        embeds: [helpEmbed]
+        embeds: [helpEmbed],
+        image: {
+            url: emotes.find(emote => emote.name === 'heart-hands').url
+        }
     });
 }
 
