@@ -26,13 +26,13 @@ _Examples_
             value: `
 \`scotl next <event-name>\`
 
-You can ask about the next upcoming daily events like the following.
+You can ask about the next upcoming daily events this way:
 
-\`scotl next grandma|gma|granny\`
-\`scotl next geyser\`
-\`scotl next reset\`
-\`scotl next sunset\`
-\`scotl next weekly\``
+- \`scotl next grandma|gma|granny\`
+- \`scotl next geyser\`
+- \`scotl next reset\`
+- \`scotl next sunset\`
+- \`scotl next weekly\``
         }
     ]
 };
