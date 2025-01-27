@@ -48,7 +48,9 @@ client.on('message', msg => {
     const submitATipChannelId = submitATipChannel?.id;
     const tipsBoardChannelId = tipsBoardChannel?.id;
 
-    if (tokens[0].toLowerCase() === 'scotl') {
+    const firstTokenLc = tokens[0].toLowerCase();
+
+    if (['scotl', 'scott'].includes(firstTokenLc)) {
         sendReponse(msg, tokens.slice(1), client);
     } else if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
