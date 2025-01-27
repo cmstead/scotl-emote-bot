@@ -1,7 +1,7 @@
 module.exports = [
     {
-        name: 'alone',
-        url: 'https://y.yarn.co/53f69251-7873-4eb2-827c-53382ec4ec74_text.gif'
+        name: 'adore',
+        url: 'https://tenor.com/view/sky-cotl-adore-gif-16169339707772600887'
     },
     {
         name: 'bearhug',
@@ -44,12 +44,20 @@ module.exports = [
         url: 'https://c.tenor.com/VAcgXCuPt4QAAAAC/sky-game-sky-children-of-the-light.gif'
     },
     {
+        name: 'cure',
+        url: 'https://tenor.com/view/sky-cotl-cure-for-me-gif-6930345488622274326'
+    },
+    {
         name: 'dance',
-        url: 'https://c.tenor.com/ck5nlgbJFCgAAAAC/sky-children-of-the-light-skycotl.gif'
+        url: 'https://tenor.com/view/sky-cotl-dance-gif-13650192422370889613'
     },
     {
         name: 'fight',
         url: 'https://c.tenor.com/J0VP-idiKIAAAAAC/sky-children-of-the-light-sky-emote.gif'
+    },
+    {
+        name: 'float',
+        url: 'https://tenor.com/view/sky-cotl-float-gif-12560800526063894275'
     },
     {
         name: 'geyser',
@@ -60,8 +68,16 @@ module.exports = [
         url: 'https://media1.tenor.com/m/iMIcmW9uKp8AAAAd/quit-sky-cotl.gif'
     },
     {
+        name: 'happydance',
+        url: 'https://tenor.com/view/sky-cotl-happy-dance-gif-6796342180896757623'
+    },
+    {
         name: 'hug',
         url: 'https://c.tenor.com/R0jNU2YE79EAAAAd/loffi-sky-emote-sky-children-of-the-light.gif'
+    },
+    {
+        name: 'heart-hands',
+        url: 'https://tenor.com/view/sky-cotl-heart-hands-gif-12187128750895668918'
     },
     {
         name: 'jolly',
