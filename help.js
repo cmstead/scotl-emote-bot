@@ -15,7 +15,7 @@ const helpEmbed = {
             value: `
 \`scotl <emote-name> <message>\`
 
-**Examples**
+_Examples_
 
 \`scotl cry\`
 \`scotl confetti\`
