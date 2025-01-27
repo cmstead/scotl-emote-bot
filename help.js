@@ -1,3 +1,5 @@
+const emotes = require('./emotes.js');
+
 const helpEmbed = {
     title: 'SCOTL Bot Quick Reference',
     fields: [
