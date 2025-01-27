@@ -12,7 +12,7 @@ function listEmotes(message) {
 
     const listEmbed = {
         title: 'SCOTL Emotes',
-        description: availableEmotes.map(emoteName => `- _${emoteName}_`).join(', '),
+        description: availableEmotes.join(', '),
         image: {
             url: emotes.find(emote => emote.name === 'adore').url
         }
