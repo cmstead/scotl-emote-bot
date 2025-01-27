@@ -51,7 +51,7 @@ ${waveUrl}`);
         let nextEventMessage = null;
 
         const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
-        if (['grandma', 'gma'].includes(eventToken.toLowerCase())) {
+        if (['grandma', 'gma', 'granny'].includes(eventToken.toLowerCase())) {
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
