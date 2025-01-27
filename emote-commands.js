@@ -10,11 +10,17 @@ function listEmotes(message) {
     const availableEmotes = emotes.map(emote => emote.name);
     availableEmotes.sort();
 
-    message.author.send(`
-Here are the emotes I know:
+    const listEmbed = {
+        title: 'SCOTL Emotes',
+        description: availableEmotes.join('\n'),
+        image: {
+            url: emotes.find(emote => emote.name === 'adore').url
+        }
+    }
 
-${availableEmotes.join('\n')}
-        `);
+    message.author.send({
+        embeds: [listEmbed]
+    });
 }
 
 function findEmote(tokens) {
