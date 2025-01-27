@@ -24,10 +24,6 @@ ${waveUrl}`);
         const guild = client.guilds.cache.get(message.guild.id);
         const channel = guild.channels.cache.get(message.channelId);
 
-        console.log(message.id);
-        console.log(message.reactions.message.mentions.repliedUser);
-        console.log(message.reactions.message.reactions);
-
         const repliedUser = message.reactions.message.mentions.repliedUser;
         const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
 
