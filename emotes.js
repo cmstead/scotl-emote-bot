@@ -28,6 +28,10 @@ module.exports = [
         url: 'https://media.tenor.com/1qdtcwBiDcUAAAAS/gigachad-prophecy-guide-sky-children-of-the-light.gif'
     },
     {
+        name: 'cheer',
+        url: 'https://media1.tenor.com/m/VPIdVqLURJAAAAAd/sky-cotl-cheer.gif'
+    },
+    {
         name: 'clap',
         url: 'https://c.tenor.com/tFpM6UEJ81QAAAAC/sky-game-sky-children-of-the-light.gif'
     },
@@ -50,6 +54,10 @@ module.exports = [
     {
         name: 'dance',
         url: 'https://media1.tenor.com/m/vW85r7MlT40AAAAd/sky-cotl-dance.gif'
+    },
+    {
+        name: 'faint',
+        url: 'https://media1.tenor.com/m/MUtpsIlO17IAAAAd/sky-cotl-faint.gif'
     },
     {
         name: 'fight',
@@ -100,6 +108,10 @@ module.exports = [
         url: 'https://c.tenor.com/qekOsBuA-BcAAAAC/loffi-emote-sky-cotl.gif'
     },
     {
+        name: 'nod',
+        url: 'https://media1.tenor.com/m/wZCoghNGoCwAAAAd/sky-cotl-nod.gif'
+    },
+    {
         name: 'wat',
         url: 'https://media1.tenor.com/m/QUm4wUztpskAAAAd/ok-okay.gif'
     },
@@ -114,6 +126,10 @@ module.exports = [
     {
         name: 'tantrum',
         url: 'https://media1.tenor.com/m/8j5qP7u5E4oAAAAd/tantrum-sky-cotl.gif'
+    },
+    {
+        name: 'there',
+        url: 'https://media1.tenor.com/m/FRqqnNZhkZkAAAAd/sky-cotl-there.gif'
     },
     {
         name: 'wave',
