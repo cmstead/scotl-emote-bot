@@ -32,7 +32,7 @@ ${waveUrl}`);
                 name: message.author.username,
                 icon_url: message.author.avatarURL()
             },
-            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n\n`,
+            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n\n-# scotl ${emote.name}`,
             image: {
                 url: emote.url
             }
@@ -51,8 +51,6 @@ ${waveUrl}`);
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
-            // } else if (eventToken.toLowerCase() === 'shard') {
-            //     nextEventMessage = `The next shard event starts ${nextShard(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'sunset') {
             nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
