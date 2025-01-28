@@ -100,7 +100,7 @@ module.exports = [
         url: 'https://c.tenor.com/qekOsBuA-BcAAAAC/loffi-emote-sky-cotl.gif'
     },
     {
-        name: 'ok',
+        name: 'wat',
         url: 'https://media1.tenor.com/m/QUm4wUztpskAAAAd/ok-okay.gif'
     },
     {
