@@ -39,7 +39,7 @@ client.on('ready', () => {
     startAlertTimer();
 });
 
-client.on('message', msg => {
+client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
 
     const guild = client.guilds.cache.get(msg.guild.id);
