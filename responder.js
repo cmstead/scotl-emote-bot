@@ -32,7 +32,7 @@ ${waveUrl}`);
                 name: message.author.username,
                 icon_url: message.author.avatarURL()
             },
-            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n-# command: \`scotl ${emote.name}\``,
+            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n-# \`${emote.name}\``,
             image: {
                 url: emote.url
             }
