@@ -15,8 +15,18 @@ function reactAndReply(msg, tokens) {
         msg.react('<:mothhonk:1191906094256238703>');
     }
 
+    const phrases = [
+        'Honk?',
+        'Honk!',
+        'Sorry, I was busy reading your messages.',
+        'https://media1.tenor.com/m/qSFhB10WHrYAAAAd/sky-cotl-heart-hands.gif',
+        'https://media1.tenor.com/m/MUtpsIlO17IAAAAd/sky-cotl-faint.gif',
+        'https://media1.tenor.com/m/rlDth0qT_wMAAAAd/sky-cotl-float.gif',
+    ];
+
     if(tokens.includes('<@925464580644294707>')){
-        msg.reply('Honk?');
+        const messageIndex = Math.floor(Math.random() * phrases.length);
+        msg.reply(prhases[messageIndex]);
     }
 }
 
