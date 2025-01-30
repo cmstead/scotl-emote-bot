@@ -41,10 +41,7 @@ function reactAndReply(msg, tokens) {
         const phrases = [
             'Honk?',
             'Honk!',
-            'Sorry, I was busy reading your messages.',
-            'https://media1.tenor.com/m/qSFhB10WHrYAAAAd/sky-cotl-heart-hands.gif',
-            'https://media1.tenor.com/m/MUtpsIlO17IAAAAd/sky-cotl-faint.gif',
-            'https://media1.tenor.com/m/rlDth0qT_wMAAAAd/sky-cotl-float.gif',
+            'Sorry, I was busy reading your messages.'
         ];
 
         if (tokens.includes('<@925464580644294707>')) {
