@@ -51,14 +51,30 @@ client.on('messageCreate', msg => {
     const firstTokenLc = tokens[0].toLowerCase();
 
     if (['scotl', 'scott'].includes(firstTokenLc)) {
-        sendReponse(msg, tokens.slice(1), client);
-    } else if((/[^a-z]*hj?(o|ö)nk/ig).test(msg.content)) {
-        msg.react('<:honk:1178124672861225000>');
-    } else if((/[ck]rab/ig).test(msg.content)) {
-        msg.react('<:dedkrab:1193212738558763029>');
-    } else if ((/krill/ig).test(msg.content)) {
-        msg.react('<:pkrilleye:1062746661438369823>');
-    } else if (msg.channelId === submitATipChannelId) {
+        return sendReponse(msg, tokens.slice(1), client);
+    } else {
+        if ((/[^a-z]*hj?(o|ö)nk/ig).test(msg.content)) {
+            msg.react('<:honk:1178124672861225000>');
+        }
+
+        if ((/[ck]rab/ig).test(msg.content)) {
+            msg.react('<:dedkrab:1193212738558763029>');
+        }
+
+        if ((/krill/ig).test(msg.content)) {
+            msg.react('<:pkrilleye:1062746661438369823>');
+        }
+
+        if ((/mo(th|ff)/ig).test(msg.content)) {
+            msg.react('<:mothhonk:1191906094256238703>');
+        }
+
+        if(tokens.includes('<@925464580644294707>')){
+            message.reply('Honk?');
+        }
+    }
+
+    if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
     } else if (msg.channelId === tipsBoardChannelId && msg.author.id !== '925464580644294707') {
         console.log(msg);
@@ -67,9 +83,9 @@ client.on('messageCreate', msg => {
 });
 
 process
-  .on('unhandledRejection', (reason, p) => {
-    console.error('Unhandled Rejection at Promise');
-  })
-  .on('uncaughtException', err => {
-    console.error('Uncaught Exception thrown', err);
-  });
+    .on('unhandledRejection', (reason, p) => {
+        console.error('Unhandled Rejection at Promise');
+    })
+    .on('uncaughtException', err => {
+        console.error('Uncaught Exception thrown', err);
+    });
