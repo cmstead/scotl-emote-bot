@@ -26,7 +26,7 @@ function reactAndReply(msg, tokens) {
 
     if(tokens.includes('<@925464580644294707>')){
         const messageIndex = Math.floor(Math.random() * phrases.length);
-        msg.reply(prhases[messageIndex]);
+        msg.reply(phrases[messageIndex]);
     }
 }
 
