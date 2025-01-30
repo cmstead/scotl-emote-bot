@@ -98,10 +98,10 @@ module.exports = function (client) {
         return getCurrentGMTDay() === 6;
     }
 
-    let lastGeyserAlert = new Date();
-    let lastRainbowAlert = new Date();
-    let lastSunsetAlert = new Date();
-    let lastFairyRingAlert = new Date();
+    // let lastGeyserAlert = new Date();
+    // let lastRainbowAlert = new Date();
+    // let lastSunsetAlert = new Date();
+    // let lastFairyRingAlert = new Date();
     let lastFashionDayAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
@@ -124,27 +124,27 @@ module.exports = function (client) {
 
             let messagesToSend = [];
 
-            if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
-                const geyserMinutes = getTimeToNextHour(minutes) + 5;
-                const grandmaMinutes = geyserMinutes + 30;
+            // if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
+            //     const geyserMinutes = getTimeToNextHour(minutes) + 5;
+            //     const grandmaMinutes = geyserMinutes + 30;
 
-                messagesToSend.push(`The polluted geyser is erupting in ${geyserMinutes} ${pluralize(geyserMinutes, 'minute')}`)
-                messagesToSend.push(`Grandma is serving a meal in ${grandmaMinutes} ${pluralize(grandmaMinutes, 'minute')}`)
+            //     messagesToSend.push(`The polluted geyser is erupting in ${geyserMinutes} ${pluralize(geyserMinutes, 'minute')}`)
+            //     messagesToSend.push(`Grandma is serving a meal in ${grandmaMinutes} ${pluralize(grandmaMinutes, 'minute')}`)
 
-                lastGeyserAlert = new Date();
-            }
+            //     lastGeyserAlert = new Date();
+            // }
 
-            if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
-                sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
-                lastRainbowAlert = new Date();
-            }
+            // if (isRandomAlertTime(3, 1) && isOkayToAlert(lastRainbowAlert) && isNearForestRainbowTime(hour, minutes)) {
+            //     sendChannelMessageAlert('Visit the forest brook _soon_ for something beautiful!');
+            //     lastRainbowAlert = new Date();
+            // }
 
             const twelveHours = 12 * 60;
 
-            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
-                sendChannelMessageAlert('Visit the hill above the 8-player door _soon_ for a little magic!');
-                lastFairyRingAlert = new Date();
-            }
+            // if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
+            //     sendChannelMessageAlert('Visit the hill above the 8-player door _soon_ for a little magic!');
+            //     lastFairyRingAlert = new Date();
+            // }
 
             const twentyFourHours = 24 * 60
 
@@ -152,11 +152,11 @@ module.exports = function (client) {
                 sendChannelMessageAlert(`It's Saturday somewhere! Post your Stunning Saturday photos in #👗fashion!`);
             }
 
-            if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {
-                sendChannelMessageAlert('Visit Sanctuary Islands _soon_ for something wonderful!');
+            // if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {
+            //     sendChannelMessageAlert('Visit Sanctuary Islands _soon_ for something wonderful!');
 
-                lastSunsetAlert = new Date();
-            }
+            //     lastSunsetAlert = new Date();
+            // }
 
             if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
                 let resetAlertMessage = [
