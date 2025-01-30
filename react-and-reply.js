@@ -1,5 +1,5 @@
 function reactAndReply(msg, tokens) {
-    const candlePattern = /[^a-z]*(ac|cr(ing)?|candle)/igm;
+    const candlePattern = /[^a-z]*(cr(ing)?|candle)/igm;
     const wlPattern = /(wlr?|(winged light))/igm;
 
     if (msg.author.id !== '925464580644294707') {
