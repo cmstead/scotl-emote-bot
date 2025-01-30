@@ -23,7 +23,7 @@ function reactAndReply(msg, tokens) {
             msg.react('🕯');
         }
 
-        if((msg.content.match(wlPattern)) {
+        if(msg.content.match(wlPattern)) {
             msg.react('<a:MimiLight:1062747923663835147>');
         }
 
