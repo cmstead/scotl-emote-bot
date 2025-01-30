@@ -3,7 +3,7 @@ const http = require('http');
 
 const { Client } = require('discord.js');
 const { sendReponse } = require('./responder');
-const { reactAndReply } = require('./responder');
+const { reactAndReply } = require('./react-and-reply');
 
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 
