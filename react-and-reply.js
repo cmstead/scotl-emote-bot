@@ -1,4 +1,4 @@
-function reactAndReply(msg) {
+function reactAndReply(msg, tokens) {
     if ((/[^a-z]*hj?(o|ö)nk/ig).test(msg.content)) {
         msg.react('<:honk:1178124672861225000>');
     }

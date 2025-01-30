@@ -54,7 +54,7 @@ client.on('messageCreate', msg => {
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else {
-        reactAndReply(msg);
+        reactAndReply(msg, tokens);
     }
 
     if (msg.channelId === submitATipChannelId) {
