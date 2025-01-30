@@ -53,7 +53,7 @@ client.on('messageCreate', msg => {
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         sendReponse(msg, tokens.slice(1), client);
     } else if((/[^a-z]*hj?onk/ig).test(msg.content)) {
-        msg.rect('<:honk:1178124672861225000>');
+        msg.react('<:honk:1178124672861225000>');
     } else if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
     } else if (msg.channelId === tipsBoardChannelId && msg.author.id !== '925464580644294707') {
