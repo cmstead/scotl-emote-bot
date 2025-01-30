@@ -54,6 +54,8 @@ client.on('messageCreate', msg => {
         sendReponse(msg, tokens.slice(1), client);
     } else if((/[^a-z]*hj?(o|ö)nk/ig).test(msg.content)) {
         msg.react('<:honk:1178124672861225000>');
+    } else if((/[ck]rab/ig).test(msg.content)) {
+        msg.react('<:dedkrab:1193212738558763029>');
     } else if ((/krill/ig).test(msg.content)) {
         msg.react('<:pkrilleye:1062746661438369823>');
     } else if (msg.channelId === submitATipChannelId) {
