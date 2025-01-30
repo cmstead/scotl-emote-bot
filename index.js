@@ -70,7 +70,7 @@ client.on('messageCreate', msg => {
         }
 
         if(tokens.includes('<@925464580644294707>')){
-            message.reply('Honk?');
+            msg.reply('Honk?');
         }
     }
 
