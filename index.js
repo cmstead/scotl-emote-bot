@@ -52,7 +52,7 @@ client.on('messageCreate', msg => {
 
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         sendReponse(msg, tokens.slice(1), client);
-    } else if((/[^a-z]hj?onk/ig).test(msg.content)) {
+    } else if((/[^a-z]*hj?onk/ig).test(msg.content)) {
         msg.reply('Honk!');
     } else if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
