@@ -24,7 +24,7 @@ function listEmotes(message) {
 }
 
 function findEmote(tokens) {
-    return emotes.find(emote => emote.name === tokens[0].toLowerCase());
+    return emotes.find(emote => emote.name === tokens[0]?.toLowerCase());
 }
 
 module.exports = {
