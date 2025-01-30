@@ -15,10 +15,6 @@ function reactAndReply(msg, tokens) {
             msg.react('<:pkrilleye:1062746661438369823>');
         }
 
-        if ((/mo(th|ff)/igm).test(msg.content)) {
-            msg.react('<:mothhonk:1191906094256238703>');
-        }
-
         if (msg.content.match(candlePattern)) {
             if (Math.random() < 0.7) {
                 msg.react('🕯');
