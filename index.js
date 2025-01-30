@@ -2,10 +2,11 @@ require('dotenv').config();
 const http = require('http');
 
 const { Client } = require('discord.js');
+const { sendReponse } = require('./responder');
+const { reactAndReply } = require('./responder');
 
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 
-const { sendReponse } = require('./responder');
 
 const startAlertTimer = require('./alerter')(client);
 const moveTip = require('./move-tip')(client);
@@ -53,25 +54,7 @@ client.on('messageCreate', msg => {
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else {
-        if ((/[^a-z]*hj?(o|ö)nk/ig).test(msg.content)) {
-            msg.react('<:honk:1178124672861225000>');
-        }
-
-        if ((/[ck]rab/ig).test(msg.content)) {
-            msg.react('<:dedkrab:1193212738558763029>');
-        }
-
-        if ((/krill/ig).test(msg.content)) {
-            msg.react('<:pkrilleye:1062746661438369823>');
-        }
-
-        if ((/mo(th|ff)/ig).test(msg.content)) {
-            msg.react('<:mothhonk:1191906094256238703>');
-        }
-
-        if(tokens.includes('<@925464580644294707>')){
-            msg.reply('Honk?');
-        }
+        reactAndReply(msg);
     }
 
     if (msg.channelId === submitATipChannelId) {
