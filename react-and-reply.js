@@ -16,6 +16,14 @@ function reactAndReply(msg, tokens) {
             msg.react('<:mothhonk:1191906094256238703>');
         }
 
+        if((/[^a-z](cr(ing|[^a-z])|candle)/ig).test(msg.content)) {
+            msg.react('🕯');
+        }
+
+        if((/[^a-z](wl(r|ing|[^a-z])|winged light)/ig).test(msg.content)) {
+            msg.react('<a:MimiLight:1062747923663835147>');
+        }
+
         const phrases = [
             'Honk?',
             'Honk!',
