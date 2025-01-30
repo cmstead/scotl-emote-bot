@@ -1,26 +1,29 @@
 function reactAndReply(msg, tokens) {
+    const candlePattern = /[^a-z]*(cr(ing)?|candle)/igm;
+    const wlPattern = /(wlr?|(winged light))/igm;
+
     if (msg.author.id !== '925464580644294707') {
         if ((/[^a-z]*h+(j|y)*(o+|ö+|a(w|h)+)n+k+/ig).test(msg.content)) {
             msg.react('<:honk:1178124672861225000>');
         }
 
-        if ((/[ck]rab/ig).test(msg.content)) {
+        if ((/[ck]rab/igm).test(msg.content)) {
             msg.react('<:dedkrab:1193212738558763029>');
         }
 
-        if ((/krill/ig).test(msg.content)) {
+        if ((/krill/igm).test(msg.content)) {
             msg.react('<:pkrilleye:1062746661438369823>');
         }
 
-        if ((/mo(th|ff)/ig).test(msg.content)) {
+        if ((/mo(th|ff)/igm).test(msg.content)) {
             msg.react('<:mothhonk:1191906094256238703>');
         }
 
-        if((/[^a-z](cr(ing|[^a-z])|candle)/ig).test(msg.content)) {
+        if(msg.content.match(candlePattern)) {
             msg.react('🕯');
         }
 
-        if((/[^a-z](wl(r|ing|[^a-z])|winged light)/ig).test(msg.content)) {
+        if((msg.content.match(wlPattern)) {
             msg.react('<a:MimiLight:1062747923663835147>');
         }
 
