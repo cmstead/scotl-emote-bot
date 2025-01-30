@@ -19,11 +19,13 @@ function reactAndReply(msg, tokens) {
             msg.react('<:mothhonk:1191906094256238703>');
         }
 
-        if(msg.content.match(candlePattern)) {
-            msg.react('🕯');
+        if (msg.content.match(candlePattern)) {
+            if (Math.random() < 0.7) {
+                msg.react('🕯');
+            }
         }
 
-        if(msg.content.match(wlPattern)) {
+        if (msg.content.match(wlPattern)) {
             msg.react('<a:MimiLight:1062747923663835147>');
         }
 
