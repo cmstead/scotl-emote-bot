@@ -1,9 +1,17 @@
 function reactAndReply(msg, tokens) {
+    const guild = client.guilds.cache.get(msg.guild.id);
+    const channel = guild.channels.cache.get(msg.channelId);
+
     const candlePattern = /[^a-z]*(cr(ing)?|candle)/igm;
     const wlPattern = /(wlr?|(winged light))/igm;
     const honkPattern = /[^a-z]*h+(j|y)*(o+|ö+|a(w|h)+)n+k+/ig;
 
-    if (msg.author.id !== '925464580644294707') {
+    if (msg.author.id !== '925464580644294707'
+        && !channel.name.includes('tip')
+        && !channel.name.includes('suggestion')
+        && !channel.name.includes('bug')
+        && !channel.name.includes('therapy')
+    ) {
         if ((honkPattern).test(msg.content)) {
             msg.react('<:honk:1178124672861225000>');
         }
