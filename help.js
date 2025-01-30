@@ -7,22 +7,22 @@ const helpEmbed = {
             name: 'Commands',
             value: `
 - \`scotl help\` : Show this help message
-${/*- \`scotl list\` : List all available emotes*/}
-${ /* - \`scotl <emote-name> <message>\` : Show an emote, optionally you can include a message */}
+- \`scotl list\` : List all available emotes
+- \`scotl <emote-name> <message>\` : Show an emote, optionally you can include a message
 - \`scotl next <event-name>\` : Get info about the next event
-${/* - \`scotl weather\` : Get the weather at the Treehouse*/}`,
+- \`scotl weather\` : Get the weather at the Treehouse`,
         },
         {
-//             name: 'Emotes',
-//             value: `
-// \`scotl <emote-name> <message>\`
+            name: 'Emotes',
+            value: `
+\`scotl <emote-name> <message>\`
 
-// _Examples_
+_Examples_
 
-// \`scotl cry\`
-// \`scotl confetti\`
-// \`scotl giveup\``
-//         },
+\`scotl cry\`
+\`scotl confetti\`
+\`scotl giveup\``
+        },
         {
             name: 'Next Event',
             value: `
