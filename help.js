@@ -21,11 +21,11 @@ const helpEmbed = {
 \`scotl info <info-key>\`
 \`scotl share-info <info-key>\`
 
-- \`scotl info friend-tree\` : Friendship Tree
-- \`scotl info shards\` : Shard Events
-- \`scotl info clock\` : Sky Clock
-- \`scotl info planner\` : Sky Planner
-- \`scotl info wiki\` : Sky Wiki`
+- Friendship Tree: \`scotl info friend-tree\`
+- Shard Events: \`scotl info shards\`
+- Sky Clock: \`scotl info clock\`
+- Sky Planner: \`scotl info planner\`
+- Sky Wiki: \`scotl info wiki\``
         },
         {
             name: 'Emotes',
