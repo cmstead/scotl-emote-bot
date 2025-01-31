@@ -30,7 +30,7 @@ function nextGrandma(time) {
     }
 }
 
-function nextSunset(time) {
+function nextTurtle(time) {
     const timeTokens = time.split(':');
     const hours = parseInt(timeTokens[0]);
     const minutes = parseInt(timeTokens[1]);
@@ -169,5 +169,5 @@ module.exports = {
     nextReset,
     nextWeeklyReset,
     nextShard,
-    nextSunset
+    nextSunset: nextTurtle
 };

@@ -51,8 +51,8 @@ ${waveUrl}`);
             nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
         } else if (eventToken.toLowerCase() === 'geyser') {
             nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
-        } else if (eventToken.toLowerCase() === 'sunset') {
-            nextEventMessage = `The next sunset starts ${nextSunset(currentPacificTime)}`
+        } else if (eventToken.toLowerCase() === 'turtle') {
+            nextEventMessage = `The next turtle starts ${nextTurtle(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'reset') {
             nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
         } else if (eventToken.toLowerCase() === 'weekly') {
