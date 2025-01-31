@@ -4,6 +4,7 @@ const http = require('http');
 const { Client } = require('discord.js');
 const { sendReponse } = require('./responder');
 const { reactAndReply } = require('./react-and-reply');
+const { allowReaction } = require('./react-allow-list');
 
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 
@@ -53,8 +54,8 @@ client.on('messageCreate', msg => {
 
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
-    } else {
-        // reactAndReply(msg, tokens);
+    } else if(allowReaction(client, msg)) {
+        reactAndReply(msg, tokens);
     }
 
     if (msg.channelId === submitATipChannelId) {
