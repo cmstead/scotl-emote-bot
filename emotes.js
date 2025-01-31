@@ -1,16 +1,16 @@
 module.exports = [
-    // {
-    //     name: 'adore',
-    //     url: 'https://media1.tenor.com/m/4GUIy55ngjcAAAAd/sky-cotl-adore.gif'
-    // },
+    {
+        name: 'adore',
+        url: 'https://i.ibb.co/Z11101SK/20250130-211915.gif'
+    },
     // {
     //     name: 'bearhug',
     //     url: 'https://c.tenor.com/Kzl4p93c4rMAAAAC/sky-children-of-the-light-sky-emote.gif'
     // },
-    // {
-    //     name: 'beckon',
-    //     url: 'https://media1.tenor.com/m/ydNN0cunYYYAAAAd/sky-cotl-beckon.gif'
-    // },
+    {
+        name: 'beckon',
+        url: 'https://i.ibb.co/vvfYfqHv/20250130-210803.gif'
+    },
     // {
     //     name: 'blush',
     //     url: 'https://c.tenor.com/l4I9k_Ef4IgAAAAC/sky-children-of-the-light-sky-cotl.gif'
@@ -23,10 +23,10 @@ module.exports = [
     //     name: 'breathe',
     //     url: 'https://c.tenor.com/vwdGq-xHJTAAAAAd/exhale-calm.gif'
     // },
-    // {
-    //     name: 'bubbles',
-    //     url: 'https://media1.tenor.com/m/rRzZmuLcJO0AAAAd/sky-cotl-bubbles.gif'
-    // },
+    {
+        name: 'bubbles',
+        url: 'https://i.ibb.co/F4g8Vtw2/20250130-210719.gif'
+    },
     // {
     //     name: 'burn',
     //     url: 'https://tenor.com/view/sky-children-of-light-moth-burn-elmo-gif-20806936'
@@ -35,10 +35,10 @@ module.exports = [
         name: 'chad',
         url: 'https://media.tenor.com/1qdtcwBiDcUAAAAS/gigachad-prophecy-guide-sky-children-of-the-light.gif'
     },
-    // {
-    //     name: 'cheer',
-    //     url: 'https://media1.tenor.com/m/VPIdVqLURJAAAAAd/sky-cotl-cheer.gif'
-    // },
+    {
+        name: 'cheer',
+        url: 'https://i.ibb.co/Xr4CcHJQ/20250130-210954.gif'
+    },
     // {
     //     name: 'clap',
     //     url: 'https://c.tenor.com/tFpM6UEJ81QAAAAC/sky-game-sky-children-of-the-light.gif'
@@ -55,42 +55,42 @@ module.exports = [
     //     name: 'cry',
     //     url: 'https://c.tenor.com/VAcgXCuPt4QAAAAC/sky-game-sky-children-of-the-light.gif'
     // },
-    // {
-    //     name: 'cure',
-    //     url: 'https://media1.tenor.com/m/YC2IgNwPxxYAAAAd/sky-cotl-cure-for-me.gif'
-    // },
-    // {
-    //     name: 'dance',
-    //     url: 'https://media1.tenor.com/m/vW85r7MlT40AAAAd/sky-cotl-dance.gif'
-    // },
-    // {
-    //     name: 'faint',
-    //     url: 'https://media1.tenor.com/m/MUtpsIlO17IAAAAd/sky-cotl-faint.gif'
-    // },
+    {
+        name: 'cure',
+        url: 'https://i.ibb.co/KjpPSx0z/20250130-211803.gif'
+    },
+    {
+        name: 'dance',
+        url: 'https://i.ibb.co/Q36VcgPv/20250130-211841.gif'
+    },
+    {
+        name: 'faint',
+        url: 'https://i.ibb.co/Y4nvCvqF/20250130-210923.gif'
+    },
     // {
     //     name: 'fight',
     //     url: 'https://c.tenor.com/J0VP-idiKIAAAAAC/sky-children-of-the-light-sky-emote.gif'
     // },
-    // {
-    //     name: 'float',
-    //     url: 'https://media1.tenor.com/m/rlDth0qT_wMAAAAd/sky-cotl-float.gif'
-    // },
+    {
+        name: 'float',
+        url: 'https://i.ibb.co/7d3dkmDc/20250130-211111.gif'
+    },
     // {
     //     name: 'geyser',
     //     url: 'https://media.tenor.com/zzXzMf3J8q4AAAAS/sky-cotl-dorqui.gif'
     // },
-    // {
-    //     name: 'giveup',
-    //     url: 'https://media1.tenor.com/m/iMIcmW9uKp8AAAAd/quit-sky-cotl.gif'
-    // },
+    {
+        name: 'giveup',
+        url: 'https://i.ibb.co/DP2CVNcB/20250130-211519.gif'
+    },
     {
         name: 'gloat',
         url: 'https://i.ibb.co/Jj3sSJXw/scotl-gloat.gif'
     },
-    // {
-    //     name: 'happydance',
-    //     url: 'https://media1.tenor.com/m/XlF1NHha13cAAAAd/sky-cotl-happy-dance.gif'
-    // },
+    {
+        name: 'happydance',
+        url: 'https://i.ibb.co/gZ8htvzc/20250130-211735.gif'
+    },
     {
         name: 'heart-hands',
         url: 'https://i.ibb.co/S7RR9rzz/heart-scotl.gif'
@@ -123,14 +123,14 @@ module.exports = [
     //     name: 'no',
     //     url: 'https://c.tenor.com/qekOsBuA-BcAAAAC/loffi-emote-sky-cotl.gif'
     // },
-    // {
-    //     name: 'nod',
-    //     url: 'https://media1.tenor.com/m/wZCoghNGoCwAAAAd/sky-cotl-nod.gif'
-    // },
-    // {
-    //     name: 'read',
-    //     url: 'https://media1.tenor.com/m/7cVZ9akjBi4AAAAd/reading-sky-cotl.gif'
-    // },
+    {
+        name: 'nod',
+        url: 'https://i.ibb.co/zh3LYDYW/20250130-210846.gif'
+    },
+    {
+        name: 'read',
+        url: 'https://i.ibb.co/NhBJnYW/20250130-211434.gif'
+    },
     {
         name: 'rocket',
         url: 'https://i.ibb.co/Z1JDsHyk/scotl-rocket.gif'
@@ -139,10 +139,10 @@ module.exports = [
     //     name: 'shy',
     //     url: 'https://c.tenor.com/l4I9k_Ef4IgAAAAC/sky-children-of-the-light-sky-cotl.gif'
     // },
-    // {
-    //     name: 'scare',
-    //     url: 'https://media1.tenor.com/m/ItHpwKNEbrsAAAAd/sky-cotl-scare.gif'
-    // },
+    {
+        name: 'scare',
+        url: 'https://i.ibb.co/jkTV1LYb/20250130-210639.gif'
+    },
     // {
     //     name: 'shrug',
     //     url: 'https://media.tenor.com/EeAG9OUMsd8AAAAC/sky-cotl-shrug-sky-cotl-whatever.gif'
@@ -155,18 +155,18 @@ module.exports = [
         name: 'stretch',
         url: 'https://i.ibb.co/ZRxFFRgL/scotl-stretch.gif'
     },
-    // {
-    //     name: 'tantrum',
-    //     url: 'https://media1.tenor.com/m/8j5qP7u5E4oAAAAd/tantrum-sky-cotl.gif'
-    // },
-    // {
-    //     name: 'there',
-    //     url: 'https://media1.tenor.com/m/FRqqnNZhkZkAAAAd/sky-cotl-there.gif'
-    // },
-    // {
-    //     name: 'wat',
-    //     url: 'https://media1.tenor.com/m/QUm4wUztpskAAAAd/ok-okay.gif'
-    // },
+    {
+        name: 'tantrum',
+        url: 'https://i.ibb.co/sdVQ2znV/tantrum-sky-cotl.gif'
+    },
+    {
+        name: 'there',
+        url: 'https://i.ibb.co/hJc9D8dX/scotl-there.gif'
+    },
+    {
+        name: 'wat',
+        url: 'https://i.ibb.co/xSBpKLVN/ok-okay.gif'
+    },
     // {
     //     name: 'wave',
     //     url: 'https://c.tenor.com/9KbJW2Ef_LAAAAAC/sky-children-of-the-light-wave.gif'
