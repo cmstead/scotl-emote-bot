@@ -61,7 +61,10 @@ ${waveUrl}`);
             nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", "sunset", or "weekly".';
         }
 
-        nextEventMessage += `\n\n-# To show this message again, type \`scotl next ${eventToken}\``;
+        const repliedUser = message.reactions.message.mentions.repliedUser;
+        const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - \n` : '';
+
+        nextEventMessage = `${repliedUserMention}${nextEventMessage}\n\n-# To show this message again, type \`scotl next ${eventToken}\``;
 
         const embed = {
             title: `Next ${eventToken} Event`,
