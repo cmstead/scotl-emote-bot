@@ -6,6 +6,10 @@ const reactAllow = [
     {
         channelName: 'meme',
         tolerance: 0.7
+    },
+    {
+        channelName: 'general',
+        tolerance: 0.1
     }
 ];
 
