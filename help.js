@@ -9,9 +9,23 @@ const helpEmbed = {
             value: `
 - \`scotl help\` : Show this help message
 - \`scotl list\` : List all available emotes
+- \`scotl info <message>\`: Request a link or infographic be sent to your DMs
+- \`scotl share-info <message>\`: Post a link or infographic to the current channel
 - \`scotl <emote-name> <message>\` : Show an emote, optionally you can include a message
 - \`scotl next <event-name>\` : Get info about the next event
 - \`scotl weather\` : Get the weather at the Treehouse`,
+        },
+        {
+            name: 'Info/Share Info',
+            value: `
+\`scotl info <info-key>\`
+\`scotl share-info <info-key>\`
+
+- \`scotl info friend-tree\` : Friendship Tree
+- \`scotl info shards\` : Shard Events
+- \`scotl info clock\` : Sky Clock
+- \`scotl info planner\` : Sky Planner
+- \`scotl info wiki\` : Sky Wiki`
         },
         {
             name: 'Emotes',
@@ -45,7 +59,8 @@ Thanks to all who have contributed to SCOTL Bot! A special thank you to the foll
 - @Crow
 - @Pepperly/Perpa
 - @Marie
-- @Lucy`
+- @Lucy
+- @Trickster`
         }
     ]
 };
