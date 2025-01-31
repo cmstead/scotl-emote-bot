@@ -169,5 +169,5 @@ module.exports = {
     nextReset,
     nextWeeklyReset,
     nextShard,
-    nextSunset: nextTurtle
+    nextTurtle
 };
