@@ -4,6 +4,7 @@ const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
 const { getWeather } = require('./weather');
 const emotes = require('./emotes');
+const { sendInfo } = require('./send-info');
 
 function sendReponse(message, tokens, client) {
     const phrase = tokens.join(' ');
@@ -22,6 +23,8 @@ ${waveUrl}`);
         showHelp(message);
     } else if (phrase === 'list') {
         listEmotes(message);
+    } else if (['info', 'share-info'].includes(firstToken)) {
+        sendInfo(message, tokens, client);
     } else if (typeof emote === 'object') {
 
         const repliedUser = message.reactions.message.mentions.repliedUser;

@@ -52,7 +52,7 @@ client.on('messageCreate', msg => {
 
     const firstTokenLc = tokens[0].toLowerCase();
 
-    if (['scotl', 'scott'].includes(firstTokenLc)) {
+    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else if(allowReaction(client, msg)) {
         reactAndReply(msg, tokens);
