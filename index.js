@@ -52,8 +52,6 @@ client.on('messageCreate', msg => {
 
     const firstTokenLc = tokens[0].toLowerCase();
 
-    console.log(allowReaction(client, msg));
-
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else if(allowReaction(client, msg)) {
