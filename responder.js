@@ -18,29 +18,29 @@ function sendReponse(message, tokens, client) {
 ${waveUrl}`);
     } else if (phrase === 'help') {
         showHelp(message);
-    // } else if (phrase === 'list') {
-    //     listEmotes(message);
-    // } else if (typeof emote === 'object') {
-    //     const guild = client.guilds.cache.get(message.guild.id);
-    //     const channel = guild.channels.cache.get(message.channelId);
+    } else if (phrase === 'list') {
+        listEmotes(message);
+    } else if (typeof emote === 'object') {
+        const guild = client.guilds.cache.get(message.guild.id);
+        const channel = guild.channels.cache.get(message.channelId);
 
-    //     const repliedUser = message.reactions.message.mentions.repliedUser;
-    //     const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
+        const repliedUser = message.reactions.message.mentions.repliedUser;
+        const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
 
-    //     const embed = {
-    //         author:{
-    //             name: message.author.username,
-    //             icon_url: message.author.avatarURL()
-    //         },
-    //         description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n-# \`${emote.name}\``,
-    //         image: {
-    //             url: emote.url
-    //         }
-    //     };
+        const embed = {
+            author:{
+                name: message.author.username,
+                icon_url: message.author.avatarURL()
+            },
+            description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n-# \`${emote.name}\``,
+            image: {
+                url: emote.url
+            }
+        };
 
-    //     channel.send({
-    //         embeds: [embed]
-    //     });
+        channel.send({
+            embeds: [embed]
+        });
     } else if (firstToken === 'next') {
         const currentPacificTime = getCurrentPacificTime();
 
