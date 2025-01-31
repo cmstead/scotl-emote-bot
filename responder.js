@@ -1,4 +1,4 @@
-const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextShard, nextSunset } = require('./next-event-message');
+const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextTurtle } = require('./next-event-message');
 const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
