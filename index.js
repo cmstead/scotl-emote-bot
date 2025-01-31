@@ -52,6 +52,8 @@ client.on('messageCreate', msg => {
 
     const firstTokenLc = tokens[0].toLowerCase();
 
+    console.log(allowReaction(client, msg));
+
     if (['scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else if(allowReaction(client, msg)) {
@@ -61,7 +63,6 @@ client.on('messageCreate', msg => {
     if (msg.channelId === submitATipChannelId) {
         moveTip.move(msg);
     } else if (msg.channelId === tipsBoardChannelId && msg.author.id !== '925464580644294707') {
-        console.log(msg);
         msg.delete();
     }
 });
