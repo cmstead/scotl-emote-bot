@@ -41,27 +41,33 @@ client.on('ready', () => {
     startAlertTimer();
 });
 
+function getChannelId(msg, channelName) {
+    const guild = client.guilds.cache.get(msg.guild.id);
+
+    const channel = guild.channels.cache.find(channel => channel.name.endsWith(channelName));
+    return channel?.id;
+}
+
 client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
-
-    const guild = client.guilds.cache.get(msg.guild.id);
-    const submitATipChannel = guild.channels.cache.find(channel => channel.name.endsWith('submit-a-tip'));
-    const tipsBoardChannel = guild.channels.cache.find(channel => channel.name.endsWith('tips-board'));
-    const submitATipChannelId = submitATipChannel?.id;
-    const tipsBoardChannelId = tipsBoardChannel?.id;
-
     const firstTokenLc = tokens[0].toLowerCase();
 
     if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
     } else if(allowReaction(client, msg)) {
-        reactAndReply(msg, tokens);
+        return reactAndReply(msg, tokens);
     }
 
-    if (msg.channelId === submitATipChannelId) {
-        moveTip.move(msg);
-    } else if (msg.channelId === tipsBoardChannelId && msg.author.id !== '925464580644294707') {
-        msg.delete();
+    if (msg.channelId === getChannelId(msg, 'submit-a-tip')) {
+        return moveTip.move(msg);
+    } else if (msg.channelId === getChannelId(msg, 'tips-board') && msg.author.id !== '925464580644294707') {
+        return msg.delete();
+    }
+
+    if (msg.channelId === getChannelId(msg, 'submit-bug-info')) {
+        return moveTip.move(msg);
+    } else if (msg.channelId === getChannelId(msg, 'bug-info-board') && msg.author.id !== '925464580644294707') {
+        return msg.delete();
     }
 });
 
