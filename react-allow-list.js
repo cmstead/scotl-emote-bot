@@ -2,6 +2,10 @@ const reactAllow = [
     {
         channelName: 'spam',
         tolerance: 1
+    },
+    {
+        channelName: 'meme',
+        tolerance: 0.7
     }
 ];
 
@@ -17,5 +21,5 @@ function allowReaction(client, message) {
 }
 
 module.exports = {
-    allowReaction
+    allowReaction,
 };
