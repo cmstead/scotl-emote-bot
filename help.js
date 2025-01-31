@@ -36,6 +36,16 @@ You can ask about the next upcoming daily events this way:
 - \`scotl next reset\`
 - \`scotl next sunset\`
 - \`scotl next weekly\``
+        },
+        {
+            name: 'Thank You',
+            value: `
+Thanks to all who have contributed to SCOTL Bot! A special thank you to the following folks for their work in contributing images and ideas as well as contributing to my education so the bot can improve over time:
+
+- @Crow
+- @Pepperly/Perpa
+- @Marie
+- @Lucy`
         }
     ]
 };
