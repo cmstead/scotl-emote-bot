@@ -9,6 +9,8 @@ function sendReponse(message, tokens, client) {
     const phrase = tokens.join(' ');
     const emote = findEmote([tokens[0]?.toLowerCase()]);
     const firstToken = typeof tokens[0] === 'string' ? tokens[0].toLowerCase() : '';
+    const guild = client.guilds.cache.get(message.guild.id);
+    const channel = guild.channels.cache.get(message.channelId);
 
     if (tokens.length === 0) {
         const waveUrl = emotes.find(emote => emote.name === 'wave').url;
@@ -21,14 +23,12 @@ ${waveUrl}`);
     } else if (phrase === 'list') {
         listEmotes(message);
     } else if (typeof emote === 'object') {
-        const guild = client.guilds.cache.get(message.guild.id);
-        const channel = guild.channels.cache.get(message.channelId);
 
         const repliedUser = message.reactions.message.mentions.repliedUser;
         const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
 
         const embed = {
-            author:{
+            author: {
                 name: message.author.username,
                 icon_url: message.author.avatarURL()
             },
@@ -61,13 +61,22 @@ ${waveUrl}`);
             nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", "sunset", or "weekly".';
         }
 
-        message.author.send(nextEventMessage);
+        nextEventMessage += `\n\n-# To show this message again, type \`scotl next ${eventToken}\``;
+
+        const embed = {
+            title: `Next ${eventToken} Event`,
+            description: nextEventMessage
+        };
+
+        channel.send({
+            embeds: [embed]
+        });
     } else if (firstToken === 'weather') {
         message.author.send(getWeather());
     } else {
         message.author.send(`I don\'t know ${firstToken}!`);
     }
-  
+
     message.delete();
 }
 
