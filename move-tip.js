@@ -1,5 +1,5 @@
-module.exports = function (client, destination = 'tips-board') {
-    function move(message) {
+module.exports = function (client) {
+    function move(message, destination = 'tips-board') {
         const guild = client.guilds.cache.get(message.guild.id);
 
         const destinationChannel = guild.channels.cache.find(channel => channel.name.endsWith(destination));
