@@ -1,5 +1,5 @@
 function reactAndReply(msg, tokens) {
-    const candlePattern = /[^a-z]*(cr(ing)?|candle)/igm;
+    const candlePattern = /[^a-z]*(cr(ing)?|candles?)[^a-z]/igm;
     const wlPattern = /(wlr?|(winged light))/igm;
     const honkPattern = /[^a-z]*h+(j|y)*(o+|ö+|a(w|h)+)n+k+/ig;
 
