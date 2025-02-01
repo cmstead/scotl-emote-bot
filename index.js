@@ -65,7 +65,7 @@ client.on('messageCreate', msg => {
     }
 
     if (msg.channelId === getChannelId(msg, 'submit-bug-info')) {
-        return moveTip.move(msg, { destination: 'bug-info-board' });
+        return moveTip.move(msg, 'bug-info-board');
     } else if (msg.channelId === getChannelId(msg, 'bug-info-board') && msg.author.id !== '925464580644294707') {
         return msg.delete();
     }

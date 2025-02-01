@@ -1,4 +1,4 @@
-module.exports = function (client, { destination} = {destination: 'tips-board'}) {
+module.exports = function (client, destination = 'tips-board') {
     function move(message) {
         const guild = client.guilds.cache.get(message.guild.id);
 
