@@ -54,7 +54,7 @@ client.on('messageCreate', msg => {
 
     if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
-    } else if(allowReaction(client, msg)) {
+    } else if (allowReaction(client, msg)) {
         return reactAndReply(msg, tokens);
     }
 
@@ -65,7 +65,7 @@ client.on('messageCreate', msg => {
     }
 
     if (msg.channelId === getChannelId(msg, 'submit-bug-info')) {
-        return moveTip.move(msg);
+        return moveTip.move(msg, { destination: 'bug-info-board' });
     } else if (msg.channelId === getChannelId(msg, 'bug-info-board') && msg.author.id !== '925464580644294707') {
         return msg.delete();
     }
