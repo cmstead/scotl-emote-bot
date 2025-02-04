@@ -27,7 +27,7 @@ module.exports = function (client) {
         });
     }
 
-    function sendChannelMessageAlert(alertMessage) {
+    function sendChannelMessageAlert(alertMessage, options = {}) {
         console.log(`send message request received: ${alertMessage}`);
         client.guilds.cache.forEach((guild) => {
             guild.fetch()
@@ -41,7 +41,12 @@ module.exports = function (client) {
 
                     if (generalChannel) {
                         console.log(`sending daily reset message to ${generalChannel.name}`);
-                        generalChannel.send(alertMessage);
+                        generalChannel.send({
+                            embeds: [{
+                                description: alertMessage,
+                                ...options
+                            }]
+                        });
                     }
                 })
 
@@ -94,7 +99,7 @@ module.exports = function (client) {
         return pacificDay === 0 && isAfterResetTime(hour, minutes);
     }
 
-    function isGMTSaturday(){
+    function isGMTSaturday() {
         return getCurrentGMTDay() === 6;
     }
 
@@ -122,7 +127,7 @@ module.exports = function (client) {
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
-            let messagesToSend = [];
+            // let messagesToSend = [];
 
             // if (isNearGeyserTime(hour, minutes) && isOkayToAlert(lastGeyserAlert)) {
             //     const geyserMinutes = getTimeToNextHour(minutes) + 5;
@@ -139,7 +144,7 @@ module.exports = function (client) {
             //     lastRainbowAlert = new Date();
             // }
 
-            const twelveHours = 12 * 60;
+            // const twelveHours = 12 * 60;
 
             // if (isRandomAlertTime(25, 1) && isOkayToAlert(lastFairyRingAlert, twelveHours) && isNearFairyRingTime(hour, minutes)) {
             //     sendChannelMessageAlert('Visit the hill above the 8-player door _soon_ for a little magic!');
@@ -148,8 +153,13 @@ module.exports = function (client) {
 
             const twentyFourHours = 24 * 60
 
-            if(isOkayToAlert(lastFashionDayAlert, twentyFourHours) && isGMTSaturday()) {
-                sendChannelMessageAlert(`It's Saturday somewhere! Post your Stunning Saturday photos in #👗fashion!`);
+            if (isOkayToAlert(lastFashionDayAlert, twentyFourHours) && isGMTSaturday()) {
+                sendChannelMessageAlert(`It's Saturday somewhere! Post your Stunning Saturday photos in #👗fashion!`, {
+                    title: 'Stunning Saturday',
+                    image: {
+                        url: 'https://i.ibb.co/Jj3sSJXw/scotl-gloat.gif'
+                    },
+                });
             }
 
             // if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {
@@ -174,14 +184,13 @@ module.exports = function (client) {
                 resetAlertMessage.push('');
                 resetAlertMessage.push('https://c.tenor.com/mPYZe9k-16MAAAAC/sky-children-skyheart.gif');
 
-                sendChannelMessageAlert(resetAlertMessage.join('\n'));
+                sendChannelMessageAlert(resetAlertMessage.join('\n'), {
+                    title: 'It\'s Reset Time',
+                    image: {
+                        url: 'https://i.ibb.co/Z11101SK/20250130-211915.gif'
+                    },
+                });
                 lastGeneralChannelResetAlert = new Date();
-            }
-
-
-
-            if (messagesToSend.length > 0) {
-                sendDirectMessageAlert(messagesToSend.join('\n'));
             }
 
         }, 5 * oneMinuteInMs);
