@@ -181,13 +181,19 @@ module.exports = function (client) {
                     resetAlertMessage.push('Eden is calling. If you choose that journey, take care of your ✨light✨.');
                 }
 
-                resetAlertMessage.push('');
-                resetAlertMessage.push('https://c.tenor.com/mPYZe9k-16MAAAAC/sky-children-skyheart.gif');
+                const imageOptions = [
+                    'https://i.ibb.co/Z11101SK/20250130-211915.gif',
+                    'https://i.ibb.co/Q36VcgPv/20250130-211841.gif',
+                    'https://i.ibb.co/VYycRQdz/scotl-crab.gif',
+                    'https://i.ibb.co/SXtQrV8p/scotl-confetti.gif',
+                    'https://i.ibb.co/39CxKV0L/high-five-scotl.gif',
+                    'https://i.ibb.co/KjpPSx0z/20250130-211803.gif',
+                ];
 
                 sendChannelMessageAlert(resetAlertMessage.join('\n'), {
                     title: 'It\'s Reset Time',
                     image: {
-                        url: 'https://i.ibb.co/Z11101SK/20250130-211915.gif'
+                        url: imageOptions[Math.floor(Math.random() * imageOptions.length)]
                     },
                 });
                 lastGeneralChannelResetAlert = new Date();
