@@ -39,7 +39,6 @@ function reactAndReply(msg, tokens) {
         '...then I said, "That\'s not a krill, that\'s my wife!"',
         'Hey look! It\'s AURORA!\n\n\n_steals a french fry_',
         'DO YOU WANT TO GO ON A MUSICAL JOURNEY??',
-        'DO YOU WANT TO GO ON A COLOR JOURNEY??',
         'The Little Prince, Moomintroll, and the Mad Hatter walk into a bar...',
     ];
 
