@@ -54,7 +54,7 @@ client.on('messageCreate', msg => {
 
     if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
-    } else if (allowReaction(client, msg)) {
+    } else if (allowReaction(client, msg, tokens)) {
         return reactAndReply(msg, tokens);
     }
 
