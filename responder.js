@@ -29,6 +29,7 @@ ${waveUrl}`);
 
         const repliedUser = message.reactions.message.mentions.repliedUser;
         const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - ` : '';
+        const emoteUrlIndex = Math.floor(Math.random() * emote.urls.length);
 
         const embed = {
             author: {
@@ -37,7 +38,7 @@ ${waveUrl}`);
             },
             description: `<@${message.author.id}> says:\n${repliedUserMention}${tokens.slice(1).join(' ')}\n-# \`${emote.name}\``,
             image: {
-                url: emote.url
+                url: emote.urls[emoteUrlIndex]
             }
         };
 
