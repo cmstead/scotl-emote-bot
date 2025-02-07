@@ -148,6 +148,10 @@ module.exports = [
         urls: ['https://i.ibb.co/Z1JDsHyk/scotl-rocket.gif']
     },
     {
+        name: 'salute',
+        urls: ['https://i.ibb.co/PGyK5dPs/2025020700175801-5-CB89-ECCE6346777-F68-C471954-F44457-1.gif']
+    },
+    {
         name: 'shy',
         urls: ['https://i.ibb.co/wFvP5twk/ezgif-31eef41fdc299.gif']
     },
