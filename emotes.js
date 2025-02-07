@@ -32,6 +32,10 @@ module.exports = [
         urls: ['https://i.ibb.co/CpwT8KVd/ezgif-23e3daa59d420.gif']
     },
     {
+        name: 'chug',
+        urls: ['https://i.ibb.co/23Y4Yj5v/scotl-tea.gif']
+    },
+    {
         name: 'chad',
         urls: ['https://media.tenor.com/1qdtcwBiDcUAAAAS/gigachad-prophecy-guide-sky-children-of-the-light.gif']
     },
@@ -62,6 +66,10 @@ module.exports = [
     {
         name: 'dance',
         urls: ['https://i.ibb.co/Q36VcgPv/20250130-211841.gif']
+    },
+    {
+        name: 'drumroll',
+        urls: ['https://i.ibb.co/8L1Tqcwd/scotl-drumroll.gif']
     },
     {
         name: 'faint',
