@@ -4,6 +4,10 @@ module.exports = [
         urls: ['https://i.ibb.co/Z11101SK/20250130-211915.gif']
     },
     {
+        name: 'aurora-journey',
+        urls: ['https://i.ibb.co/ZpFYTYvj/ezgif-21382f2588f929.gif']
+    },
+    {
         name: 'bearhug',
         urls: ['https://i.ibb.co/wZCBPcx4/ezgif-36525fb5564ed.gif']
     },
@@ -186,6 +190,10 @@ module.exports = [
     {
         name: 'there',
         urls: ['https://i.ibb.co/hJc9D8dX/scotl-there.gif']
+    },
+    {
+        name: 'touch-grass',
+        urls: ['https://i.ibb.co/C3DCV5vX/grass-s.gif']
     },
     {
         name: 'wat',
