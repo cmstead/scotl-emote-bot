@@ -4,7 +4,7 @@ module.exports = function (client) {
 
         const destinationChannel = guild.channels.cache.find(channel => channel.name.endsWith(destination));
 
-        const tipContent = `by: ${message.author.username}\n${message.content}`;
+        const tipContent = `by: <@${message.author.id}>\n${message.content}`;
         const tipAttachments = message.attachments.map(attachment => attachment.url);
         const embeds = message.embeds
         
