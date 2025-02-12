@@ -181,6 +181,23 @@ module.exports = function (client) {
                     resetAlertMessage.push('Eden is calling. If you choose that journey, take care of your ✨light✨.');
                 }
 
+                const blurbs = [
+                    'Whatever happens in Valley of Triumph, stays in Valley of Triumph.',
+                    'You can\'t play sky all day if you don\'t start in the morning.',
+                    'Yeti loves you!',
+                    'Tell those krill to get off my lawn!',
+                    'It\'s midnight, tell the chibi mafia to knock it off.',
+                    'Is that a candle in your pocket or are you just happy to see me?',
+                    'A little manta told me you\'re looking cute today!',
+                    'Chibis: always 100% caffeinated.',
+                    'Honk!',
+                ];
+
+                const selectedBlurb = blurbs[Math.floor(Math.random() * blurbs.length)];
+
+                resetAlertMessage.push('');
+                resetAlertMessage.push(`_${selectedBlurb}_`);
+
                 const imageOptions = [
                     'https://i.ibb.co/Z11101SK/20250130-211915.gif',
                     'https://i.ibb.co/Q36VcgPv/20250130-211841.gif',
@@ -188,6 +205,11 @@ module.exports = function (client) {
                     'https://i.ibb.co/SXtQrV8p/scotl-confetti.gif',
                     'https://i.ibb.co/39CxKV0L/high-five-scotl.gif',
                     'https://i.ibb.co/KjpPSx0z/20250130-211803.gif',
+                    'https://i.ibb.co/KpDCDtHv/ezgif-2cc13e6df2fde.gif',
+                    'https://i.ibb.co/gZ8htvzc/20250130-211735.gif',
+                    'https://i.ibb.co/nN7gggYs/ezgif-22dbcfd380d1f.gif',
+                    'https://i.ibb.co/G4dpvJy4/scotl-sparkler.gif',
+                    'https://i.ibb.co/Fkj4Cvkc/ezgif-25f1968893983.gif',
                 ];
 
                 sendChannelMessageAlert(resetAlertMessage.join('\n'), {
