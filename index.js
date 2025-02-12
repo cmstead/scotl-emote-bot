@@ -10,7 +10,7 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS
 
 
 const startAlertTimer = require('./alerter')(client);
-const moveTip = require('./move-tip')(client);
+const moveTip = require('./tips/move-tip')(client);
 
 const port = process.env.PORT ?? 8080;
 
