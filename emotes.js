@@ -100,6 +100,10 @@ module.exports = [
         urls: ['https://i.ibb.co/Jj3sSJXw/scotl-gloat.gif']
     },
     {
+        name: 'go-to-sleep',
+        urls: ['https://i.ibb.co/SDRwv7gf/Radiant-Go-To-Sleep.gif']
+    },
+    {
         name: 'facepalm',
         urls: ['https://i.ibb.co/C5vNb48H/ezgif-272238581f4ae.gif']
     },
