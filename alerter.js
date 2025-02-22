@@ -36,7 +36,7 @@ module.exports = function (client) {
     }
 
     function isAfterResetTime(hour, minutes) {
-        return hour % 24 < 2 && minutes > 5;
+        return hour % 24 === 0 && minutes > 5;
     }
 
     function isOkayToAlert(lastAlert, offset = 20) {
@@ -63,7 +63,7 @@ module.exports = function (client) {
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
-            if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 130)) {
+            if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60) {
                 let resetAlertMessage = [
                     'Happy reset! Visit #💡hints for information about daily quests, candles and more!',
                     '',
