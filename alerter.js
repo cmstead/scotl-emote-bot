@@ -53,7 +53,6 @@ module.exports = function (client) {
         return getCurrentGMTDay() === 6;
     }
 
-    let lastFashionDayAlert = new Date();
     let lastGeneralChannelResetAlert = new Date();
 
     return function startAlertTimer() {
@@ -63,7 +62,7 @@ module.exports = function (client) {
             const hour = parseInt(timeTokens[0]);
             const minutes = parseInt(timeTokens[1]);
 
-            if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60) {
+            if (isAfterResetTime(hour, minutes) && isOkayToAlert(lastGeneralChannelResetAlert, 60)) {
                 let resetAlertMessage = [
                     'Happy reset! Visit #💡hints for information about daily quests, candles and more!',
                     '',
