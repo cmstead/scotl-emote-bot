@@ -21,7 +21,7 @@ function getCurrentPacificDay() {
 }
 
 function getCurrentGMTDay() {
-    currentDate = newDate();
+    currentDate = new Date();
     const timePattern = 'i';
     const dayIndicator = dateFnsTz.format(currentDate, timePattern);
 
