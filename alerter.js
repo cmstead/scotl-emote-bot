@@ -46,6 +46,12 @@ module.exports = function (client) {
                                 description: alertMessage,
                                 ...options
                             }]
+                        })
+                        ?.then((result) => {
+                            console.log(`message sent to ${generalChannel.name}`);
+                        })
+                        ?.catch(function(error) {
+                           console.error(`error sending message to ${generalChannel.name}: ${error}`); 
                         });
                     }
                 })
