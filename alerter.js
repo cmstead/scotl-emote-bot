@@ -37,22 +37,26 @@ module.exports = function (client) {
                 .then((channels) => {
                     console.log('attempting to send to channel');
 
-                    const generalChannel = channels.find((channel) => channel?.name?.endsWith('general'))
+                    const preferredChannel = channels.find((channel) => channel?.name?.endsWith('sky-general'));
+                    const selectedChannel = preferredChannel
+                        ? preferredChannel
+                        : channels.find((channel) => channel?.name?.endsWith('general'));
 
-                    if (generalChannel) {
-                        console.log(`sending daily reset message to ${generalChannel.name}`);
-                        generalChannel.send({
+                    if (selectedChannel) {
+                        console.log(`sending daily reset message to ${selectedChannel.name}`);
+
+                        return selectedChannel.send({
                             embeds: [{
                                 description: alertMessage,
                                 ...options
                             }]
                         })
-                        ?.then((result) => {
-                            console.log(`message sent to ${generalChannel.name}`);
-                        })
-                        ?.catch(function(error) {
-                           console.error(`error sending message to ${generalChannel.name}: ${error}`); 
-                        });
+                            ?.then(() => {
+                                console.log(`message sent to ${selectedChannel.name}`);
+                            })
+                            ?.catch(function (error) {
+                                console.error(`error sending message to ${selectedChannel.name}: ${error}`);
+                            });
                     }
                 })
 
