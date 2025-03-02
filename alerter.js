@@ -170,6 +170,8 @@ module.exports = function (client) {
                         url: 'https://i.ibb.co/Jj3sSJXw/scotl-gloat.gif'
                     },
                 });
+
+                lastFashionDayAlert = new Date();
             }
 
             // if (isRandomAlertTime(25, 1) && isOkayToAlert(lastSunsetAlert, twelveHours) && isNearSunsetTime(hour, minutes)) {
