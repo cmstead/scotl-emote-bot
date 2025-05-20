@@ -120,6 +120,10 @@ module.exports = [
         urls: ['https://i.ibb.co/39CxKV0L/high-five-scotl.gif']
     },
     {
+        name: 'himbo',
+        urls: ['https://i.ibb.co/Kxsv3b5X/Untitled.gif']
+    },
+    {
         name: 'hug',
         urls: ['https://i.ibb.co/dwD85D58/ezgif-38dd37efc15bd.gif']
     },
