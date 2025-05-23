@@ -1,6 +1,6 @@
-const { isBotPing, canReactOrReply, canReact, getChannel } = require('./react-allow-list');
+const { canReactOrReply, canReact, getChannel } = require('../../react-allow-list');
 
-function reactAndReply(client, msg, tokens) {
+module.exports = function messageReplyReactionsActions(client, msg) {
     const channel = getChannel(client, msg);
 
     if (canReactOrReply(channel, msg) && canReact(channel, msg)) {
@@ -35,26 +35,4 @@ function reactAndReply(client, msg, tokens) {
         }
 
     }
-
-    if (canReactOrReply(channel, msg) && isBotPing(tokens)) {
-        const phrases = [
-            'Honk?',
-            'Honk!',
-            'Sorry, I was busy reading your messages.',
-            'I hear a moth in trouble! I must go!',
-            '...then I said, "That\'s not a krill, that\'s my wife!"',
-            'Hey look! It\'s AURORA!\n\n\n_steals a french fry_',
-            'DO YOU WANT TO GO ON A MUSICAL JOURNEY??',
-            'The Little Prince, Moomintroll, and the Mad Hatter walk into a bar...',
-        ];
-
-        if (isBotPing(tokens)) {
-            const messageIndex = Math.floor(Math.random() * phrases.length);
-            msg.reply(phrases[messageIndex]);
-        }
-    }
 }
-
-module.exports = {
-    reactAndReply
-};

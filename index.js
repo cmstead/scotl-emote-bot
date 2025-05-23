@@ -3,8 +3,7 @@ const http = require('http');
 
 const { Client } = require('discord.js');
 const { sendReponse } = require('./responder');
-const { reactAndReply } = require('./react-and-reply');
-const { allowReaction } = require('./react-allow-list');
+const runActions = require('./actionRunner');
 
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 
@@ -52,12 +51,6 @@ client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
     const firstTokenLc = tokens[0].toLowerCase();
 
-    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
-        return sendReponse(msg, tokens.slice(1), client);
-    } else if (allowReaction(client, msg, tokens)) {
-        return reactAndReply(msg, tokens);
-    }
-
     if (msg.channelId === getChannelId(msg, 'submit-a-tip')) {
         return moveTip.move(msg);
     } else if (msg.channelId === getChannelId(msg, 'tips-board') && msg.author.id !== '925464580644294707') {
@@ -69,6 +62,13 @@ client.on('messageCreate', msg => {
     } else if (msg.channelId === getChannelId(msg, 'bug-info-board') && msg.author.id !== '925464580644294707') {
         return msg.delete();
     }
+
+    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
+        return sendReponse(msg, tokens.slice(1), client);
+    } else {
+        runActions(client, msg, tokens);
+    }
+
 });
 
 process
