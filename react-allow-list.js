@@ -1,3 +1,5 @@
+const {BOT_ID} = require('./constants');
+
 const reactAllow = [
     {
         channelName: 'spam',
@@ -12,8 +14,6 @@ const reactAllow = [
         tolerance: 0.2
     }
 ];
-
-const BOT_ID = '925464580644294707';
 
 const getChannel = (client, message) => {
     const guild = client.guilds.cache.get(message.guild.id);

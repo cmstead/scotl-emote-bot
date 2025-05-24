@@ -9,7 +9,7 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS
 
 
 const startAlertTimer = require('./alerter')(client);
-const moveTip = require('./tips/move-tip')(client);
+const moveTip = require('./actions/move-message/move-tip')(client);
 
 const port = process.env.PORT ?? 8080;
 
@@ -50,18 +50,6 @@ function getChannelId(msg, channelName) {
 client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
     const firstTokenLc = tokens[0].toLowerCase();
-
-    if (msg.channelId === getChannelId(msg, 'submit-a-tip')) {
-        return moveTip.move(msg);
-    } else if (msg.channelId === getChannelId(msg, 'tips-board') && msg.author.id !== '925464580644294707') {
-        return msg.delete();
-    }
-
-    if (msg.channelId === getChannelId(msg, 'submit-bug-info')) {
-        return moveTip.move(msg, 'bug-info-board');
-    } else if (msg.channelId === getChannelId(msg, 'bug-info-board') && msg.author.id !== '925464580644294707') {
-        return msg.delete();
-    }
 
     if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
         return sendReponse(msg, tokens.slice(1), client);
