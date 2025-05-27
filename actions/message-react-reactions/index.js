@@ -24,6 +24,10 @@ function messageReplyReactionsActions(client, msg) {
             msg.react('<:mothhonk:1191906094256238703>');
         }
 
+        if ((/yaoi/igm).test(msg.content)) {
+            msg.react('👀');
+        }
+
         if (msg.content.match(candlePattern)) {
             if (Math.random() < 0.7) {
                 msg.react('🕯');
