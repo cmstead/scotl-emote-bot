@@ -1,19 +1,36 @@
-const pingReplyActions = require('./actions/ping-reply');
-const messageReplyReactionsActions = require('./actions/message-reply-reactions');
-const moveMessageAction = require('./actions/move-message');
-const showHelpAction = require('./actions/help');
+const pingReply = require('./actions/ping-reply');
+const messageReact = require('./actions/message-react-reactions');
+const moveMessage = require('./actions/move-message');
+const showHelp = require('./actions/help');
 
 const actions = [
-    showHelpAction,
-    pingReplyActions,
-    messageReplyReactionsActions,
-    moveMessageAction
+    showHelp.action,
+    pingReply.action,
+    messageReact.action,
+    moveMessage.action
 ];
 
-module.exports = function runActions(client, msg, tokens) {
+const names = [
+    showHelp.name,
+    pingReply.name,
+    messageReact.name,
+    moveMessage.name
+
+]
+
+function runActions(client, msg, tokens) {
     actions.forEach(action => {
         if (typeof action === 'function') {
             action(client, msg, tokens);
         }
     });
 }
+
+function isActionName(name) {
+    return names.includes(name);
+}
+
+module.exports = {
+    isActionName,
+    runActions
+};

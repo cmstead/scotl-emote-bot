@@ -1,6 +1,6 @@
 const { canReactOrReply, canReact, getChannel } = require('../../react-allow-list');
 
-module.exports = function messageReplyReactionsActions(client, msg) {
+function messageReplyReactionsActions(client, msg) {
     const channel = getChannel(client, msg);
 
     if (canReactOrReply(channel, msg) && canReact(channel, msg)) {
@@ -33,6 +33,10 @@ module.exports = function messageReplyReactionsActions(client, msg) {
         if (msg.content.match(wlPattern)) {
             msg.react('<a:MimiLight:1062747923663835147>');
         }
-
     }
+}
+
+module.exports = {
+    name: 'message-reply',
+    action: messageReplyReactionsActions,
 }

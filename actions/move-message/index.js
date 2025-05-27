@@ -13,7 +13,7 @@ function getChannelId(client, msg, channelName) {
     return channel?.id;
 }
 
-module.exports = function moveMessageAction(client, msg) {
+function moveMessageAction(client, msg) {
     const moveTip = getMoveTip(client);
 
     Object.keys(boardsMap).forEach((key) => {
@@ -24,3 +24,8 @@ module.exports = function moveMessageAction(client, msg) {
         }
     });
 }
+
+module.exports = {
+    name: 'move-message',
+    action: moveMessageAction
+};

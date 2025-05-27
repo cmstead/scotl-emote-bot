@@ -3,13 +3,12 @@ const http = require('http');
 
 const { Client } = require('discord.js');
 const { sendReponse } = require('./responder');
-const runActions = require('./actionRunner');
+const { isActionName, runActions } = require('./actionRunner');
 
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 
 
 const startAlertTimer = require('./alerter')(client);
-const moveTip = require('./actions/move-message/move-tip')(client);
 
 const port = process.env.PORT ?? 8080;
 
@@ -40,19 +39,12 @@ client.on('ready', () => {
     startAlertTimer();
 });
 
-function getChannelId(msg, channelName) {
-    const guild = client.guilds.cache.get(msg.guild.id);
-
-    const channel = guild.channels.cache.find(channel => channel.name.endsWith(channelName));
-    return channel?.id;
-}
-
 client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
     const firstTokenLc = tokens[0].toLowerCase();
 
-    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc)) {
-        return sendReponse(msg, tokens.slice(1), client);
+    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc) && !isActionName(tokens[1])) {
+        sendReponse(msg, tokens.slice(1), client);
     } else {
         runActions(client, msg, tokens);
     }

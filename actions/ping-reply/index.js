@@ -1,6 +1,6 @@
 const { isBotPing, canReactOrReply, getChannel } = require('../../react-allow-list');
 
-module.exports = function pingReplyActions(client, msg, tokens) {
+function pingReplyActions(client, msg, tokens) {
     const channel = getChannel(client, msg);
 
     if (canReactOrReply(channel, msg) && isBotPing(tokens)) {
@@ -19,3 +19,8 @@ module.exports = function pingReplyActions(client, msg, tokens) {
         msg.reply(phrases[messageIndex]);
     }
 }
+
+module.exports = {
+    name: 'ping-reply',
+    action: pingReplyActions
+};
