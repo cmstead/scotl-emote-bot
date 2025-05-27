@@ -1,5 +1,4 @@
 const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextTurtle } = require('./next-event-message');
-const { showHelp } = require('./help');
 const { listEmotes, findEmote } = require('./emote-commands');
 const { getCurrentPacificTime } = require('./datetime');
 const { getWeather } = require('./weather');
@@ -19,8 +18,6 @@ function sendReponse(message, tokens, client) {
         message.author.send(`'Hi! Need help? Try "scotl help"
 
 ${waveUrl}`);
-    } else if (phrase === 'help') {
-        showHelp(message);
     } else if (phrase === 'list') {
         listEmotes(message);
     } else if (['info', 'share-info'].includes(firstToken)) {

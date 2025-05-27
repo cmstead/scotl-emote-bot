@@ -65,15 +65,17 @@ Thanks to all who have contributed to SCOTL Bot! A special thank you to the foll
     ]
 };
 
-function showHelp(message) {
-    message.author.send({
-        embeds: [helpEmbed],
-        image: {
-            url: emotes.find(emote => emote.name === 'heart-hands').url
-        }
-    });
+function showHelpAction(_, message, tokens) {
+    const phrase = tokens.join(' ');
+
+    if (phrase === 'help') {
+        message.author.send({
+            embeds: [helpEmbed],
+            image: {
+                url: emotes.find(emote => emote.name === 'heart-hands').url
+            }
+        });
+    }
 }
 
-module.exports = {
-    showHelp
-};
+module.exports = showHelpAction;
