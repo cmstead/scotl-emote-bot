@@ -1,6 +1,4 @@
-const { nextGrandma, nextGeyser, nextReset, nextWeeklyReset, nextTurtle } = require('./next-event-message');
 const { listEmotes, findEmote } = require('./emote-commands');
-const { getCurrentPacificTime } = require('./datetime');
 const { getWeather } = require('./weather');
 const emotes = require('./emotes');
 const { sendInfo } = require('./send-info');
@@ -37,39 +35,6 @@ ${waveUrl}`);
             image: {
                 url: emote.urls[emoteUrlIndex]
             }
-        };
-
-        channel.send({
-            embeds: [embed]
-        });
-    } else if (firstToken === 'next') {
-        const currentPacificTime = getCurrentPacificTime();
-
-        let nextEventMessage = null;
-
-        const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
-        if (['grandma', 'gma', 'granny'].includes(eventToken.toLowerCase())) {
-            nextEventMessage = `Grandma is serving the next meal ${nextGrandma(currentPacificTime)}`;
-        } else if (eventToken.toLowerCase() === 'geyser') {
-            nextEventMessage = `The polluted geyser is erupting ${nextGeyser(currentPacificTime)}`
-        } else if (eventToken.toLowerCase() === 'turtle') {
-            nextEventMessage = `The next turtle starts ${nextTurtle(currentPacificTime)}`
-        } else if (eventToken.toLowerCase() === 'reset') {
-            nextEventMessage = `Next daily reset ${nextReset(currentPacificTime)}`
-        } else if (eventToken.toLowerCase() === 'weekly') {
-            nextEventMessage = `Next weekly reset ${nextWeeklyReset(currentPacificTime)}`
-        } else {
-            nextEventMessage = 'Next event must be either "grandma", "gma", "geyser", "reset", "shard", "sunset", or "weekly".';
-        }
-
-        const repliedUser = message.reactions.message.mentions.repliedUser;
-        const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - \n` : '';
-
-        nextEventMessage = `${repliedUserMention}${nextEventMessage}\n\n-# To show this message again, type \`scotl next ${eventToken}\``;
-
-        const embed = {
-            title: `Next ${eventToken} Event`,
-            description: nextEventMessage
         };
 
         channel.send({

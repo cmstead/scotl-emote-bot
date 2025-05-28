@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const { nextGrandma, nextGeyser, nextReset, nextShard } = require('../next-event-message');
+const { nextGrandma, nextGeyser, nextReset, nextShard } = require('../actions/next-event/next-event-message');
 
 describe('SCOTL next event command', function () {
     describe('next grandma event', function () {

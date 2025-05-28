@@ -2,21 +2,18 @@ const pingReply = require('./actions/ping-reply');
 const messageReact = require('./actions/message-react-reactions');
 const moveMessage = require('./actions/move-message');
 const showHelp = require('./actions/help');
+const nextEvent = require('./actions/next-event');
 
-const actions = [
-    showHelp.action,
-    pingReply.action,
-    messageReact.action,
-    moveMessage.action
+const actionDefinitions = [
+    showHelp,
+    nextEvent,
+    pingReply,
+    messageReact,
+    moveMessage
 ];
 
-const names = [
-    showHelp.name,
-    pingReply.name,
-    messageReact.name,
-    moveMessage.name
-
-]
+const actions = actionDefinitions.map((definition) => definition.action);
+const names = actionDefinitions.map((definition) => definition.name)
 
 function runActions(client, msg, tokens) {
     actions.forEach(action => {
