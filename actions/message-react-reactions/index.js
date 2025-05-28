@@ -24,7 +24,7 @@ function messageReplyReactionsActions(client, msg) {
             msg.react('<:mothhonk:1191906094256238703>');
         }
 
-        if ((/y(ao|ur)i/igm).test(msg.content)) {
+        if ((/(y(ao|ur)i)|corn/igm).test(msg.content)) {
             msg.react('👀');
         }
 
