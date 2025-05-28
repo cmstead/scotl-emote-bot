@@ -66,7 +66,7 @@ Thanks to all who have contributed to SCOTL Bot! A special thank you to the foll
 };
 
 function showHelpAction(_, message, tokens) {
-    const phrase = tokens[1]?.toLowerCase();
+    const phrase = tokens[0]?.toLowerCase();
     
     if (phrase === 'help') {
         message.author.send({

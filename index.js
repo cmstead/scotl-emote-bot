@@ -46,7 +46,7 @@ client.on('messageCreate', msg => {
     if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc) && !isActionName(tokens[1])) {
         sendReponse(msg, tokens.slice(1), client);
     } else {
-        runActions(client, msg, tokens);
+        runActions(client, msg, tokens.slice(1));
     }
 
 });
