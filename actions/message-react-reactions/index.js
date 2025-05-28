@@ -4,7 +4,7 @@ function messageReplyReactionsActions(client, msg) {
     const channel = getChannel(client, msg);
 
     if (canReactOrReply(channel, msg) && canReact(channel, msg)) {
-        const candlePattern = /^(.*[^a-z])?(cr(ing)?|candles?)([^a-z].*)?$)/igm;
+        const candlePattern = /[^a-z](cr(ing)?|candles?)[^a-z])/igm;
         const wlPattern = /(wlr?|(winged light))/igm;
         const honkPattern = /[^a-z]*h+(j|y)*(o+|ö+|a(w|h)+)n+k+/ig;
 
