@@ -39,14 +39,17 @@ client.on('ready', () => {
     startAlertTimer();
 });
 
+const commandTokens = ['!scotl', 'scotl', 'scott'];
+
 client.on('messageCreate', msg => {
     const tokens = msg.content.split(' ');
     const firstTokenLc = tokens[0].toLowerCase();
+    const commandToken = commandTokens.includes(firstTokenLc) ? 'scotl' : '';
 
-    if (['!scotl', 'scotl', 'scott'].includes(firstTokenLc) && !isActionName(tokens[1])) {
+    if (commandToken === 'scotl' && !isActionName(tokens[1])) {
         sendReponse(msg, tokens.slice(1), client);
     } else {
-        runActions(client, msg, tokens.slice(1));
+        runActions(client, msg, tokens.slice(1), commandToken);
     }
 
 });

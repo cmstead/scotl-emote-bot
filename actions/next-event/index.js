@@ -19,12 +19,12 @@ function getEventMessage(eventToken) {
     }
 }
 
-function nextEventAction(_, message, tokens) {
+function nextEventAction(_, message, tokens, commandToken) {
     const firstToken = tokens.length ? tokens[0].toLowerCase() : '';
     const eventToken = typeof tokens[1] === 'string' ? tokens[1] : '';
     const channel = message.channel;
 
-    if (firstToken === 'next') {
+    if (commandToken === 'scotl' && firstToken === 'next') {
         const nextEventMessageBase = getEventMessage(eventToken);
         const repliedUser = message.reactions.message.mentions.repliedUser;
         const repliedUserMention = repliedUser ? `<@${repliedUser.id}> - \n` : '';

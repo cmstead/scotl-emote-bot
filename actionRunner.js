@@ -15,10 +15,10 @@ const actionDefinitions = [
 const actions = actionDefinitions.map((definition) => definition.action);
 const names = actionDefinitions.map((definition) => definition.name)
 
-function runActions(client, msg, tokens) {
+function runActions(client, msg, tokens, commandToken) {
     actions.forEach(action => {
         if (typeof action === 'function') {
-            action(client, msg, tokens);
+            action(client, msg, tokens, commandToken);
         }
     });
 }
