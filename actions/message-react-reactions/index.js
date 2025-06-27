@@ -28,6 +28,10 @@ function messageReplyReactionsActions(client, msg) {
             msg.react('👀');
         }
 
+        if ((/beans?/igm).test(msg.content)) {
+            msg.react('🫘');
+        }
+
         if (msg.content.match(candlePattern)) {
             if (Math.random() < 0.7) {
                 msg.react('🕯');
