@@ -6,12 +6,16 @@ const reactAllow = [
         tolerance: 1
     },
     {
+        channelName: 'gif-sharing',
+        tolerance: 8
+    },
+    {
         channelName: 'meme',
-        tolerance: 0.7
+        tolerance: 0.8
     },
     {
         channelName: 'general',
-        tolerance: 0.2
+        tolerance: 0.3
     }
 ];
 

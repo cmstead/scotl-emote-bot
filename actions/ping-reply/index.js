@@ -1,9 +1,9 @@
 const { isBotPing, canReactOrReply, getChannel } = require('../../react-allow-list');
 
-function pingReplyActions(client, msg, tokens) {
+function pingReplyActions(client, msg, tokens, firstToken) {
     const channel = getChannel(client, msg);
 
-    if (canReactOrReply(channel, msg) && isBotPing(tokens)) {
+    if (canReactOrReply(channel, msg) && isBotPing([firstToken, ...tokens])) {
         const phrases = [
             'Honk?',
             'Honk!',
@@ -13,6 +13,8 @@ function pingReplyActions(client, msg, tokens) {
             'Hey look! It\'s AURORA!\n\n\n_steals a french fry_',
             'DO YOU WANT TO GO ON A MUSICAL JOURNEY??',
             'The Little Prince, Moomintroll, and the Mad Hatter walk into a bar...',
+            'Did someone say _CORN_??',
+            'Don\'t make me bring down the bean hammer!'
         ];
 
         const messageIndex = Math.floor(Math.random() * phrases.length);
