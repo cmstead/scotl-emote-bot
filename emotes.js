@@ -157,7 +157,7 @@ module.exports = [
     },
     {
         name: 'popcorn',
-        urls: ['https://i.ibb.co/DHqs4jPh/2025020523534301-5-CB89-ECCE6346777-F68-C471954-F44457-1.gif']
+        urls: ['https://ibb.co/rKKfFfx7']
     },
     {
         name: 'read',
