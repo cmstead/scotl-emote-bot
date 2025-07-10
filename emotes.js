@@ -192,6 +192,10 @@ module.exports = [
         urls: ['https://i.ibb.co/ZRxFFRgL/scotl-stretch.gif']
     },
     {
+        name: 'sus',
+        urls: ['https://i.ibb.co/cKsTGDBq/SUS.gif']
+    },
+    {
         name: 'tantrum',
         urls: ['https://i.ibb.co/sdVQ2znV/tantrum-sky-cotl.gif']
     },
