@@ -200,6 +200,10 @@ module.exports = [
         urls: ['https://i.ibb.co/hJc9D8dX/scotl-there.gif']
     },
     {
+        name: 'thinking',
+        urls: ['https://i.ibb.co/YKstxdM/SKY-20250709-182338-1-1.gif']
+    },
+    {
         name: 'touch-grass',
         urls: ['https://i.ibb.co/C3DCV5vX/grass-s.gif']
     },
