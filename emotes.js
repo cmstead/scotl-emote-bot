@@ -157,7 +157,7 @@ module.exports = [
     },
     {
         name: 'popcorn',
-        urls: ['https://i.ibb.co/DHqs4jPh/2025020523534301-5-CB89-ECCE6346777-F68-C471954-F44457-1.gif']
+        urls: ['https://i.ibb.co/mrrFbF9D/SKY-20250708-232248-1-1.gif']
     },
     {
         name: 'read',
@@ -192,12 +192,20 @@ module.exports = [
         urls: ['https://i.ibb.co/ZRxFFRgL/scotl-stretch.gif']
     },
     {
+        name: 'sus',
+        urls: ['https://i.ibb.co/cKsTGDBq/SUS.gif']
+    },
+    {
         name: 'tantrum',
         urls: ['https://i.ibb.co/sdVQ2znV/tantrum-sky-cotl.gif']
     },
     {
         name: 'there',
         urls: ['https://i.ibb.co/hJc9D8dX/scotl-there.gif']
+    },
+    {
+        name: 'thinking',
+        urls: ['https://i.ibb.co/YKstxdM/SKY-20250709-182338-1-1.gif']
     },
     {
         name: 'touch-grass',
