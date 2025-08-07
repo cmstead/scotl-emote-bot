@@ -76,7 +76,7 @@ function showHelpAction(_, message, tokens) {
             }
         });
 
-        message.delete();
+        // message.delete();
 
         return true;
     }

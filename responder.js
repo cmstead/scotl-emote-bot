@@ -46,7 +46,7 @@ ${waveUrl}`);
         message.author.send(`I don\'t know ${firstToken}!`);
     }
 
-    message.delete();
+    // message.delete();
 }
 
 module.exports = {
