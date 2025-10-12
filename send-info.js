@@ -35,13 +35,13 @@ function sendInfo(message, tokens, client) {
     const resendMessage = `To show this message again, type \`scotl ${command} ${infoKey}\``;
 
     const embed = {
-        title: `Info: ${infoData.name}`,
-        description: `${infoData.url}\n\n-# ${resendMessage}`
+        title: `Info: ${infoData?.name}`,
+        description: `${infoData?.url}\n\n-# ${resendMessage}`
     };
 
-    if(infoData.imageUrl) {
+    if(infoData?.imageUrl) {
         embed.image = {
-            url: infoData.imageUrl
+            url: infoData?.imageUrl
         };
     }
 
