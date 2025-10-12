@@ -28,7 +28,9 @@ function sendInfo(message, tokens, client) {
 
     const infoData = info[infoKey];
 
-    if (!infoData) { throw new Error(`No info found for ${infoKey}`); };
+    if (!infoData) {
+        message.author.send(`I don't have info about "${infoKey}". Try one of: ${Object.keys(info).join(', ')}`);
+    };
 
     const resendMessage = `To show this message again, type \`scotl ${command} ${infoKey}\``;
 
