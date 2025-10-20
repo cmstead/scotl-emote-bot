@@ -16,6 +16,10 @@ const info = {
         name: 'Shard Events',
         url: 'https://sky-shards.pages.dev/'
     },
+    'space-day': {
+        name: 'Space Day',
+        url: 'Space Day is on the 6th, 14th, 22nd, and 30th of each month! 🪐'
+    },
     'wiki': {
         name: 'Sky Wiki',
         url: 'https://sky-children-of-the-light.fandom.com/wiki/Sky:_Children_of_the_Light_Wiki'
